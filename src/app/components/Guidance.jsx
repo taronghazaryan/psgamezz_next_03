@@ -105,7 +105,7 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
       checked: false,
       console_id: sub.consoles.find(id => consoleTypes.find(c => c.id === id)?.name === ps),
       id: period.id,
-      img: "/img/eaplay.png",
+      img: "/img/ea-play.png",
       level: sub.level,
       period_id: period.id,
       price: Number(period.price),
@@ -132,7 +132,7 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
         <div className="flex flex-col lg:flex-row gap-8 mt-[100px] mb-12.5 max-sm:py-10 max-sm:mb-7.5 max-sm:mt-0 " id="eaplay">
           <div className="flex bg-[#1e1f2e] items-center justify-center gap-1 h-full rounded-3xl p-8 border border-white/10 shadow-xl flex-shrink-0">
             <Image
-              src="/img/eaplay.png"
+              src="/img/ea-play.png"
               alt="EA Play"
               className="rounded-3xl md:w-[420px] md:h-auto xl:w-[400px] xl:h-[400px] sm:h-full max-sm:w-full max-sm:h-[150px] object-cover"
               width={400}

@@ -114,7 +114,7 @@ const Header = () => {
               <div className="flex items-center gap-2">
                 <Image
                   className="h-5 w-5"
-                  src={pathname === "/games" ? "/logo/3blue.png" : "/logo/3.png"}
+                  src={pathname === "/games" ? "/logo/3blue.png" : "/logo/33.png"}
                   alt="Игры"
                   width={20}
                   height={20}
@@ -209,7 +209,7 @@ const Header = () => {
             <div className="relative">
               <Image
                 className="h-6 w-6 md:h-7 md:w-7"
-                src="/logo/5.png"
+                src="/logo/55.png"
                 alt="Корзина"
                 width={28}
                 height={28}

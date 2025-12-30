@@ -53,7 +53,7 @@ const Section2 = () => {
             <div className="premium-card rounded-3xl p-8 md:p-10 premium-card-hover h-full flex flex-col items-center text-center border-2 border-[#ef4444]/30">
                 <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl  flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <Image
-                      src="/img/eaplay.png"
+                      src="/img/ea-play.png"
                       alt="Иконка"
                       width={108}
                       height={108}
