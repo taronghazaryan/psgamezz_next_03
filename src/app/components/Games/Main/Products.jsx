@@ -90,7 +90,7 @@ export default function Products() {
 
   function renderSwiper(title, productsList, prevClass, nextClass, showEmptyMessage = false) {
     return (
-      <div className="w-full max-w-[1400px] mx-auto mb-16 md:mb-20">
+      <div className="w-full max-w-[1400px] mx-auto">
         <div className="relative">
           <div className="flex items-center justify-between mb-8 md:mb-12 px-4 md:px-0">
             <button 

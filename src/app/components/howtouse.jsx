@@ -17,17 +17,17 @@ export default function HowToUse() {
   ];
 
   return (
-
+    <div className="max-w-[1400px] mx-auto  md:px-6 lg:px-8">
       <section className="flex justify-center overflow-hidden">
         <div className="pt-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-14 gap-3 xl:flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 md:gap-8 gap-3 xl:flex justify-center">
             {steps.map((step, index) => (
             <div
               key={index}
-              className="relative w-[280px] h-[115px] md:w-[285px] md:h-[150px] xl:w-full xl:h-[100px] max-sm:w-full border border-[rgba(255, 255, 255, 1)] rounded-[16px] px-[16px] flex flex-col justify-center max-sm:px-3"
+              className="relative w-[280px] h-[115px] sm:w-full xl:w-full xl:h-[100px] max-sm:w-full border border-[rgba(255, 255, 255, 1)] rounded-[16px] px-[16px] flex flex-col justify-center max-sm:px-3"
             >
               {/* Текст шага с отступом справа под номер */}
-              <p className="xl:text-xl font-[600] leading-[1.2] tracking-[-0.02em] text-white/80 max-sm:text-[13px] pr-[50px]">
+              <p className="xl:text-xl md:text-xl max-sm:text-sm font-[400] leading-[1.2] tracking-[-0.02em] text-white/80  pr-[50px]">
                 {step.text}
               </p>
 
@@ -41,5 +41,6 @@ export default function HowToUse() {
           </div>
         </div>
       </section>
+    </div>
   );
 }

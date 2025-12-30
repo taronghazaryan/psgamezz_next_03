@@ -138,7 +138,7 @@ const BasketPageClient = () => {
                     <div className="h-px bg-white/10"></div>
                     <div className="flex items-center justify-between">
                       <span className="text-xl md:text-2xl font-bold text-white">Итого</span>
-                      <span className="text-2xl md:text-3xl font-black text-gradient-warm">
+                      <span className="text-2xl md:text-3xl font-black text-white">
                         {overallPrice}₽
                       </span>
                     </div>
@@ -182,7 +182,7 @@ const BasketPageClient = () => {
             <div className='p-6 md:p-8'>
               <h2 className='text-3xl md:text-4xl font-black mb-2'>Ваш заказ</h2>
               <p className='text-white/60 text-lg mb-6'>
-                Сумма: <span className='text-gradient-warm font-bold text-xl'>{overallPrice}₽</span>
+                Сумма: <span className='text-white font-bold text-xl'>{overallPrice}₽</span>
               </p>
 
               <div className='h-px bg-white/10 mb-6'></div>

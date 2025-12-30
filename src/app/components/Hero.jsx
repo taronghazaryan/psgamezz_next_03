@@ -63,12 +63,12 @@ const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
             <div className="bg-[#1e1f2e]/50 rounded-3xl p-8 md:p-10 border border-white/10 shadow-xl hover:border-[#6366f1]/50 transition-all duration-300 group">
               <div className="flex flex-col items-center text-center h-full">
-                <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl bg-[#6366f1]/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl  flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Image
-                    src="/img/controller.png"
+                    src="/icons/games_ic.png"
                     alt="Иконка"
-                    width={78}
-                    height={78}
+                    width={108}
+                    height={108}
                     className="object-contain"
                   />
                 </div>
@@ -89,12 +89,12 @@ const Hero = () => {
 
             <div className="bg-[#1e1f2e]/50 rounded-3xl p-8 md:p-10 border border-white/10 shadow-xl hover:border-[#f59e0b]/50 transition-all duration-300 group">
               <div className="flex flex-col items-center text-center h-full">
-                <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl bg-[#f59e0b]/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl  flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Image
-                    src="/img/btns.png"
+                    src="/icons/subs_ic.png"
                     alt="Иконка"
-                    width={78}
-                    height={78}
+                    width={108}
+                    height={108}
                     className="object-contain"
                   />
                 </div>

@@ -24,7 +24,7 @@ export default function SubscriptionHero() {
           <div className="w-full">
             <div className="text-center mb-12 md:mb-16 animate-fade-in">
               <div className="inline-block mb-6">
-                <span className="text-2xl md:text-3xl font-bold text-[#6366f1] bg-[#6366f1]/20 px-6 py-2 rounded-full border border-[#6366f1]/30">
+                <span className="text-2xl md:text-4xl font-bold text-[#6366f1] bg-[#6366f1]/20 px-6 py-2 rounded-full border border-[#6366f1]/30">
                   PlayStation Plus
                 </span>
               </div>
@@ -87,7 +87,7 @@ export default function SubscriptionHero() {
             <div className="text-center animate-fade-in">
               <button 
                 onClick={handleScroll} 
-                className="bg-[#6366f1] hover:bg-[#5555e0] text-white px-12 md:px-16 py-5 md:py-6 rounded-2xl text-xl md:text-2xl lg:text-3xl font-black shadow-2xl hover:scale-105 transition-transform duration-300"
+                className="bg-[#d88a09] hover:bg-[#f59e0b] text-white px-12 md:px-16 py-5 md:py-6 rounded-2xl text-xl md:text-2xl lg:text-3xl font-black shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
                 Подключить подписку
               </button>

@@ -21,13 +21,13 @@ export default function GamesPage() {
                 className={`
                   relative 
                   px-4 sm:px-8 md:px-12 lg:px-16 
-                  py-1 sm:py-4 md:py-5 
-                  rounded-xl font-bold 
-                  text-sm max-sm:text-[18px] sm:text-base md:text-lg lg:text-xl 
-                  transition-all duration-300
+                  py-1 sm:py-1 md:py-1 
+                  font-bold 
+                  text-sm max-sm:text-sm sm:text-base md:text-lg lg:text-xl 
+                  transition-all duration-300 cursor-pointer
                   ${activeTab === tab
                     ? "text-white scale-105"
-                    : "text-white/80 hover:text-white hover:bg-white/10"}
+                    : "text-white/60 hover:text-white "}
                 `}
               >
                 {tab}

@@ -226,7 +226,7 @@ export default function AllGames() {
         {/* Main content */}
         <div className="flex-1">
           {/* Верхний блок кнопок */}
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center mb-4 px-10">
             {/* Кнопка фильтров для мобильных */}
             <button
               onClick={() => setIsSidebarOpen(true)}

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useBasket } from "../context/BasketContext";
 import HowToUse from "./howtouse";
+import { ChevronDown, ChevronUp } from 'lucide-react';
+
 
 export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
   const [selectedDuration, setSelectedDuration] = useState(null);
@@ -118,15 +120,17 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
 
   return (
     <div className="w-full max-w-[1400px] mx-auto">
-      <div className="py-6 max-sm:px-4 max-sm:py-4 overflow-hidden">
-        <h1 className="xl:text-4xl md:text-3xl font-[900] max-sm:text-[15px] font-bold text-white mb-8 max-sm:mb-2">
+      <div className=" max-sm:px-4  overflow-hidden">
+        <div className="flex justify-center mb-2">
+        <h1 className="xl:text-4xl md:text-3xl xl:font-[900] md:font-[900] font-montserrat text-white mb-2 max-md:text-2xl max-sm:text-[16px] max-sm:mb-0">
           Как пользоваться?
         </h1>
+        </div>
         <HowToUse />
 
         {/* Main block */}
-        <div className="flex flex-col lg:flex-row gap-8 mt-[100px] mb-12.5 max-sm:py-4 max-sm:mb-7.5 max-sm:mt-0 max-sm:gap-2.5" id="eaplay">
-          <div className="bg-[#1e1f2e] rounded-3xl p-8 border border-white/10 shadow-xl flex-shrink-0">
+        <div className="flex flex-col lg:flex-row gap-8 mt-[100px] mb-12.5 max-sm:py-10 max-sm:mb-7.5 max-sm:mt-0 " id="eaplay">
+          <div className="flex bg-[#1e1f2e] items-center justify-center gap-1 h-full rounded-3xl p-8 border border-white/10 shadow-xl flex-shrink-0">
             <Image
               src="/img/eaplay.png"
               alt="EA Play"
@@ -272,35 +276,36 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
             {questions.map((item, index) => {
               const isOpen = openIndex === index;
               return (
-                <div
-                  key={index}
-                  className="w-full sm:w-[48%] flex flex-col gap-2 max-sm:gap-1"
-                >
-                  <div className="flex items-center gap-2 bg-[#1e1f2e] p-3 rounded-lg border border-white/10">
-                    <p className="text-white xl:text-[16px] md:text-[16px] font-semibold leading-5 max-sm:text-xs max-sm:font-bold flex-1">
-                      {item.question}
-                    </p>
-                    <button
-                      className={`flex items-center justify-center px-3 py-1 text-lg border rounded-sm cursor-pointer max-sm:w-4 max-sm:h-3 max-sm:rounded-xs max-sm:text-sm max-sm:pb-0.5 max-sm:px-0 transition-all duration-200 ${
-                        isOpen ? "bg-[#6366f1] text-white border-[#6366f1]" : "bg-white/10 text-white border-white/20 hover:bg-white/20"
-                      }`}
-                      onClick={() => setOpenIndex(isOpen ? null : index)}
-                    >
-                      {isOpen ? "-" : "+"}
-                    </button>
-                  </div>
-                  <div
-                    className={`transition-all duration-500 overflow-hidden ${
-                      isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <div className="bg-[#1e1f2e] py-2 px-2.5 rounded-2xl mt-2 max-sm:rounded-lg max-sm:py-1.5 max-sm:mt-1.5 border border-white/10">
-                      <p className="text-white xl:text-[16px] md:text-[14px] max-sm:text-xs max-sm:font-bold">
-                        {item.answer}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <div key={index} className="mb-4">
+								<div className='flex items-center justify-between gap-2 premium-card rounded-xl p-4 premium-card-hover border border-white/10'>
+									<p className='text-white font-bold text-base md:text-lg leading-5 flex-1'>
+										{item.question}
+									</p>
+									<button
+										onClick={() => {
+											setOpenIndex(isOpen ? null : index);
+										}}
+										className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#6366f1]/20 hover:bg-[#6366f1]/30 flex items-center justify-center transition-all duration-200"
+									>
+										{isOpen ? (
+											<ChevronUp className='w-6 h-6 text-[#6366f1]' />
+										) : (
+											<ChevronDown className='w-6 h-6 text-white' />
+										)}
+									</button>
+								</div>
+								<div
+									className={`transition-all duration-300 overflow-hidden ${
+										isOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'
+									}`}
+								>
+									<div className='premium-card py-4 px-5 rounded-2xl border border-white/10'>
+										<p className='text-white/90 text-sm md:text-base leading-relaxed whitespace-pre-line'>
+											{item.answer}
+										</p>
+									</div>
+								</div>
+							</div>
               );
             })}
           </div>

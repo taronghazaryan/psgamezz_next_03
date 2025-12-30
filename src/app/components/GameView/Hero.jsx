@@ -37,6 +37,33 @@ export default function Hero({ productItem }) {
     },
   ];
 
+  const languageMap = {
+    ru: "🇷🇺 Русский",
+    en: "🇬🇧 Английский",
+    es: "🇪🇸 Испанский",
+    fr: "🇫🇷 Французский",
+    de: "🇩🇪 Немецкий",
+    it: "🇮🇹 Итальянский",
+    ja: "🇯🇵 Японский",
+    zh: "🇨🇳 Китайский",
+    ar: "🇸🇦 Арабский",
+    tr: "🇹🇷 Турецкий",
+    не: "❌ Нет"
+  };
+
+
+  const translateLang = (value) => {
+    if (!value) return "";
+
+    if (Array.isArray(value)) {
+      return value
+        .map((code) => languageMap[code] || code)
+        .join(", ");
+    }
+    
+    return languageMap[value] || value;
+  };
+
   const getPriceData = () => {
     if (!productItem?.prices) return null;
     const key = activation === "с активацией" ? "with_activation" : "without_activation";
@@ -193,7 +220,7 @@ export default function Hero({ productItem }) {
                         </div>
                       </>
                     ) : (
-                      <span className="text-2xl md:text-3xl font-black text-[#6366f1]">{selectedPrice}₽</span>
+                      <span className="text-2xl md:text-3xl font-black text-white">{selectedPrice}₽</span>
                     )}
                   </div>
                 )}
@@ -257,15 +284,30 @@ export default function Hero({ productItem }) {
                     <p className="text-white/90">{productItem.about}</p>
                   </div>
                 </div>
+              <div className={`transition-all duration-700 overflow-hidden ${openTab === "details" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
+                <div className="bg-[#1e1f2e] rounded-xl p-4 border border-white/10">
 
-                <div className={`transition-all duration-700 overflow-hidden ${openTab === "details" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
-                  <div className="bg-[#1e1f2e] rounded-xl p-4 border border-white/10">
-                    {productItem.categories?.length > 0 && <p className="mb-2 text-white/90">Жанры: {productItem.categories.join(", ")}</p>}
-                    {productItem.publishers?.length > 0 && <p className="mb-2 text-white/90">Издатели: {productItem.publishers.join(", ")}</p>}
-                    {productItem.voice_acting?.length > 0 && <p className="mb-2 text-white/90">Озвучка: {productItem.voice_acting.join(", ")}</p>}
-                    {productItem.subtitle?.length > 0 && <p className="mb-2 text-white/90">Озвучка: {productItem.subtitle.join(", ")}</p>}                     
-                  </div>
+                  {/* Субтитры */}
+                  {productItem.subtitle && (
+                    <div className="mb-4 text-white/90">
+                      <p className="font-semibold mb-1">Субтитры:</p>
+                      {productItem.subtitle.PS4 && <p>PS4: {translateLang(productItem.subtitle.PS4)}</p>}
+                      {productItem.subtitle.PS5 && <p>PS5: {translateLang(productItem.subtitle.PS5)}</p>}
+                    </div>
+                  )}
+
+                  {/* Озвучка */}
+                  {productItem.voice_acting && (
+                    <div className="mb-4 text-white/90">
+                      <p className="font-semibold mb-1">Субтитры:</p>
+                      {productItem.voice_acting.PS4 && <p>PS4: {translateLang(productItem.voice_acting.PS4)}</p>}
+                      {productItem.voice_acting.PS5 && <p>PS5: {translateLang(productItem.voice_acting.PS5)}</p>}
+                    </div>
+                  )}
                 </div>
+              </div>
+
+
 
                 <div className={`transition-all duration-700 overflow-hidden ${openTab === "faq" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
                   <div className="bg-[#1e1f2e] rounded-xl p-4 flex flex-col gap-2 border border-white/10">

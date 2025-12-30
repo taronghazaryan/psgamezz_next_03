@@ -128,12 +128,12 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 					<h1 className="xl:text-4xl md:text-3xl xl:font-[900] md:font-[900] font-montserrat text-white mb-2 max-md:text-2xl max-sm:text-[16px] max-sm:mb-0">
 						PlayStation Plus
 					</h1>
-					<p className="text-white/70 xl:text-2xl md:text-xl max-md:text-lg max-sm:text-[10px]">
+					<p className="text-white/70 xl:text-2xl md:text-xl max-md:text-lg max-sm:text-[10px]" id="psplus" >
 						Выберите подходящую подписку
 					</p>
 				</div>
 
-				<div className="flex flex-col lg:flex-row gap-8" id="psplus">
+				<div className="flex flex-col lg:flex-row gap-8" >
 					{/* Left card */}
 					<div className="bg-[#1e1f2e] rounded-3xl p-8 text-white w-full md:w-[420px] xl:w-[400px] xl:h-auto border border-white/10 shadow-xl">
 						<div className="flex flex-col items-center justify-center gap-1 h-full">

@@ -79,7 +79,7 @@ export default function Card({ activationType, prices, ...product }) {
       className="w-full max-w-[250px] group"
     >
       <div
-        className="flex flex-col  overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full"
+        className="flex flex-col  overflow-hidden  transition-shadow h-full"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

@@ -52,7 +52,7 @@ export default function SubscriptionPageClient() {
         <div className="px-4 md:px-6 lg:px-8 py-12 md:py-16" id="subscriptions">
           <PsPlus subscriptions={psPlusSubs} consoleTypes={consoleTypes} />
         </div>
-        <div className="px-4 md:px-6 lg:px-8 py-12 md:py-16 bg-[#0d0e14]">
+        <div className="px-4 md:px-6 lg:px-8  bg-[#0d0e14]">
           <Guidance subscriptions={eaPlaySubs} consoleTypes={consoleTypes} />
         </div>
       </div>

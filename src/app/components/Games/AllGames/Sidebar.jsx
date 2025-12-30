@@ -119,7 +119,7 @@ export default function SideBAR({ filters, onCheckboxChange, onPriceChange, onRe
         <div className="flex flex-col gap-3 mt-6">
           <button
             onClick={onReset}
-            className="w-full bg-black text-black py-3 rounded-md hover:bg-white transition-colors font-medium cursor-pointer"
+            className="w-full bg-white/80 text-black font-[1000] py-3 rounded-md hover:bg-white transition-colors  cursor-pointer"
           >
             Сбросить всё
           </button>

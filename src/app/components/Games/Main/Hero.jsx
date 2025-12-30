@@ -46,7 +46,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-3xl"></div>
           <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1]/20 via-transparent to-[#ec4899]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
           <div className="z-10">
-            <h2 className="text-white font-black text-4xl md:text-5xl mb-4 drop-shadow-2xl">{title}</h2>
+            <h2 className="text-white font-black text-4xl md:text-5xl lg:text-6xl mb-4 drop-shadow-2xl">{title}</h2>
             <p className="text-white/90 font-medium w-full max-w-xl mb-6 line-clamp-3 text-lg">
               {description}
             </p>
@@ -99,13 +99,13 @@ export default function Hero() {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-3xl"></div>
               <div className="absolute bottom-4 left-4 right-4 z-10">
-                <h2 className="text-white font-bold max-sm:text-3xl text-lg mb-1 line-clamp-1 drop-shadow-lg">
+                <h2 className="text-white font-bold max-sm:text-2xl text-lg mb-1 line-clamp-1 drop-shadow-lg">
                   {item.title}
                 </h2>
-                <p className="text-white/90 font-medium text-xl line-clamp-2 mb-2">
+                <p className="text-white/90 font-medium text-xl max-sm:text-sm line-clamp-2 mb-2">
                   {item.description}
                 </p>
-                <button className="w-full py-2 rounded-lg text-xl bg-white/80 text-black font-black">
+                <button className="premium-button w-full py-2 rounded-lg text-xl max-sm:text-sm text-black font-black">
                   Купить от {item.price}₽
                 </button>
               </div>
