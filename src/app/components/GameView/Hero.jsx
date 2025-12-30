@@ -299,7 +299,7 @@ export default function Hero({ productItem }) {
                   {/* Озвучка */}
                   {productItem.voice_acting && (
                     <div className="mb-4 text-white/90">
-                      <p className="font-semibold mb-1">Субтитры:</p>
+                      <p className="font-semibold mb-1">Озвучка:</p>
                       {productItem.voice_acting.PS4 && <p>PS4: {translateLang(productItem.voice_acting.PS4)}</p>}
                       {productItem.voice_acting.PS5 && <p>PS5: {translateLang(productItem.voice_acting.PS5)}</p>}
                     </div>
