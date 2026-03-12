@@ -75,32 +75,59 @@ const Header = () => {
   };
 
   return (
-    <header className="relative z-50 w-full bg-[#1a1b26] border-b border-white/10 shadow-lg">
+    <header
+      className="relative z-50 w-full bg-[#1a1b26] border-b border-white/10 shadow-lg"
+      style={{ paddingTop: "var(--tg-safe-area-inset-top, env(safe-area-inset-top, 0px))" }}
+    >
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
 
         {/* ── MOBILE HEADER (Telegram-optimised, no hamburger — navigation via BottomNav) ── */}
-        <div
-          className="flex md:hidden items-center justify-between h-14"
-          style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
-        >
-          <Link href="/" className="flex-shrink-0 hover:opacity-90 transition-opacity duration-200">
-            <Image
-              className="h-9 w-auto"
-              src="/logo/1.png"
-              alt="PSGamezz Logo"
-              width={120}
-              height={54}
-              priority
-            />
-          </Link>
-
-          <button
-            className="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
-            onClick={toggleSearch}
-            aria-label="Поиск"
-          >
-            {mobileSearchOpen ? <IoClose size={22} /> : <IoSearch size={22} />}
-          </button>
+        <div className="flex md:hidden items-center h-14 gap-2">
+          {mobileSearchOpen ? (
+            <>
+              <div className="relative flex-1">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <IoSearch className="text-white/40" size={16} />
+                </div>
+                <input
+                  autoFocus
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Поиск игр..."
+                  className="w-full pl-9 pr-4 py-2.5 bg-white/10 border border-white/20 rounded-xl text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] focus:bg-white/15 transition-all duration-200"
+                />
+              </div>
+              <button
+                className="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white flex-shrink-0"
+                onClick={toggleSearch}
+                aria-label="Закрыть"
+              >
+                <IoClose size={22} />
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="/" className="flex-shrink-0 hover:opacity-90 transition-opacity duration-200">
+                <Image
+                  className="h-9 w-auto"
+                  src="/logo/1.png"
+                  alt="PSGamezz Logo"
+                  width={120}
+                  height={54}
+                  priority
+                />
+              </Link>
+              <div className="flex-1" />
+              <button
+                className="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
+                onClick={toggleSearch}
+                aria-label="Поиск"
+              >
+                <IoSearch size={22} />
+              </button>
+            </>
+          )}
         </div>
 
         {/* ── DESKTOP HEADER ── */}
@@ -244,54 +271,39 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile search dropdown */}
-      {mobileSearchOpen && (
-        <div className="md:hidden border-t border-white/10 px-4 py-3 animate-fade-in bg-[#1a1b26]">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <IoSearch className="text-white/40" />
-            </div>
-            <input
-              autoFocus
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Поиск игр..."
-              className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] focus:bg-white/15 focus:ring-2 focus:ring-[#6366f1]/20 transition-all duration-200"
-            />
-            {query && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-[#252732] rounded-xl shadow-xl border border-white/10 max-h-[60vh] overflow-y-auto z-50">
-                {loading ? (
-                  <div className="p-3 text-center text-white/60 text-sm">Загрузка...</div>
-                ) : results.length > 0 ? (
-                  <div className="p-2">
-                    {results.map((game) => (
-                      <Link
-                        key={game.id}
-                        href={`/games/${game.slug}`}
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-all"
-                        onClick={() => handleSelectGame(game)}
-                      >
-                        <Image
-                          src={game.main_image_url}
-                          alt={game.title}
-                          width={50}
-                          height={66}
-                          className="w-12 h-16 object-cover rounded-lg flex-shrink-0"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <p className="font-medium text-white text-sm truncate">{game.title}</p>
-                          <p className="text-xs text-white/60">
-                            от {game.prices?.without_activation?.[0]?.PS4 || game.prices?.without_activation?.[0]?.PS5 || "—"} ₽
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="p-3 text-center text-white/60 text-sm">Ничего не найдено</div>
-                )}
+      {/* Mobile search results (shown below header when query is active) */}
+      {mobileSearchOpen && query && (
+        <div className="md:hidden px-4 pb-2 bg-[#1a1b26] animate-fade-in">
+          <div className="bg-[#252732] rounded-xl shadow-xl border border-white/10 max-h-[60vh] overflow-y-auto">
+            {loading ? (
+              <div className="p-3 text-center text-white/60 text-sm">Загрузка...</div>
+            ) : results.length > 0 ? (
+              <div className="p-2">
+                {results.map((game) => (
+                  <Link
+                    key={game.id}
+                    href={`/games/${game.slug}`}
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-all"
+                    onClick={() => handleSelectGame(game)}
+                  >
+                    <Image
+                      src={game.main_image_url}
+                      alt={game.title}
+                      width={50}
+                      height={66}
+                      className="w-12 h-16 object-cover rounded-lg flex-shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-white text-sm truncate">{game.title}</p>
+                      <p className="text-xs text-white/60">
+                        от {game.prices?.without_activation?.[0]?.PS4 || game.prices?.without_activation?.[0]?.PS5 || "—"} ₽
+                      </p>
+                    </div>
+                  </Link>
+                ))}
               </div>
+            ) : (
+              <div className="p-3 text-center text-white/60 text-sm">Ничего не найдено</div>
             )}
           </div>
         </div>

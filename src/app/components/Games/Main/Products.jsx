@@ -43,12 +43,12 @@ export default function Products() {
     async function loadData(url = "/api/games/?has_discount=true") {
       try {
         let saleCandidates = [];
-        let nextUrl = undefined;
+        let currentUrl = url;
         for (let i = 0; i < 5 && saleCandidates.length < 25; i++) {
-          const { results, next } = await fetchGamesPage(url);
+          const { results, next } = await fetchGamesPage(currentUrl);
           saleCandidates = saleCandidates.concat(results);
           if (!next) break;
-          nextUrl = next;
+          currentUrl = next;
         }
 
         const filteredSale = saleCandidates.filter(product => {
