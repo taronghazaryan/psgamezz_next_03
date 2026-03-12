@@ -18,6 +18,8 @@ const BasketPageClient = () => {
   }, []);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRulesModalOpen, setIsRulesModalOpen] = useState(false);
+  const [agreedToRules, setAgreedToRules] = useState(false);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
@@ -237,6 +239,27 @@ const BasketPageClient = () => {
                 </div>
               </div>
 
+              {/* Rules agreement */}
+              <div className="mb-4 p-4 bg-white/5 border border-white/10 rounded-xl">
+                <p className="text-white/70 text-sm mb-3">
+                  Пожалуйста ознакомьтесь с нашими правилами
+                </p>
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={agreedToRules}
+                    onChange={(e) => {
+                      if (e.target.checked) setIsRulesModalOpen(true);
+                      else setAgreedToRules(false);
+                    }}
+                    className="h-5 w-5 accent-[#6366f1] cursor-pointer flex-shrink-0"
+                  />
+                  <span className="text-white/80 text-sm group-hover:text-white transition-colors">
+                    Я согласен
+                  </span>
+                </label>
+              </div>
+
               {error && (
                 <div className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-xl text-red-300 text-sm">
                   {error}
@@ -252,10 +275,49 @@ const BasketPageClient = () => {
                 </button>
                 <button
                   onClick={handleSubmit}
-                  disabled={loading}
+                  disabled={loading || !agreedToRules}
                   className="flex-1 bg-[#6366f1] hover:bg-[#5555e0] text-white py-4 rounded-xl text-lg font-black transition-all duration-200 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {loading ? "Обработка..." : "Купить"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Rules modal */}
+      {isRulesModalOpen && (
+        <div className="fixed inset-0 z-[99999999] flex items-center justify-center bg-black/90 backdrop-blur-md animate-fade-in p-4">
+          <div className="relative premium-card text-white w-full max-w-lg rounded-3xl shadow-xl border border-white/10 animate-fade-in max-h-[80vh] flex flex-col">
+            <button
+              onClick={() => setIsRulesModalOpen(false)}
+              className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110 z-10"
+            >
+              <X size={24} className="text-white" />
+            </button>
+
+            <div className="p-6 md:p-8 flex flex-col gap-4 overflow-y-auto">
+              <h2 className="text-2xl md:text-3xl font-black">Правила</h2>
+              <div className="text-white/70 text-sm leading-relaxed space-y-3">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+              </div>
+
+              <div className="flex gap-3 mt-2">
+                <button
+                  onClick={() => setIsRulesModalOpen(false)}
+                  className="flex-1 py-3 rounded-xl font-bold text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
+                >
+                  Закрыть
+                </button>
+                <button
+                  onClick={() => { setAgreedToRules(true); setIsRulesModalOpen(false); }}
+                  className="flex-1 bg-[#6366f1] hover:bg-[#5555e0] text-white py-3 rounded-xl font-black transition-all duration-200 hover:scale-105 shadow-lg"
+                >
+                  Принять
                 </button>
               </div>
             </div>

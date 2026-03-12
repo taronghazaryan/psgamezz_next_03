@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { IoSearch, IoClose } from "react-icons/io5";
+import { IoSearch, IoClose, IoMenu } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useBasket } from "../context/BasketContext";
 import { searchGames } from "../api/games";
-import { IoMenu } from "react-icons/io5";
 
 const Header = () => {
   const pathname = usePathname();
@@ -15,7 +14,6 @@ const Header = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const { basket } = useBasket();
@@ -36,9 +34,7 @@ const Header = () => {
       setResults([]);
       return;
     }
-
     if (debounceRef.current) clearTimeout(debounceRef.current);
-
     debounceRef.current = setTimeout(async () => {
       setLoading(true);
       try {
@@ -60,19 +56,10 @@ const Header = () => {
   const handleSelectGame = (game) => {
     localStorage.setItem("lastClickedProductId", game.id);
     setQuery("");
-    setMobileSearchOpen(false);
     setMenuOpen(false);
   };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-    if (!menuOpen) setMobileSearchOpen(false);
-  };
-
-  const toggleSearch = () => {
-    setMobileSearchOpen(!mobileSearchOpen);
-    if (!mobileSearchOpen) setMenuOpen(false);
-  };
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
     <header
@@ -81,53 +68,18 @@ const Header = () => {
     >
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
 
-        {/* ── MOBILE HEADER (Telegram-optimised, no hamburger — navigation via BottomNav) ── */}
-        <div className="flex md:hidden items-center h-14 gap-2">
-          {mobileSearchOpen ? (
-            <>
-              <div className="relative flex-1">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <IoSearch className="text-white/40" size={16} />
-                </div>
-                <input
-                  autoFocus
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Поиск игр..."
-                  className="w-full pl-9 pr-4 py-2.5 bg-white/10 border border-white/20 rounded-xl text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] focus:bg-white/15 transition-all duration-200"
-                />
-              </div>
-              <button
-                className="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white flex-shrink-0"
-                onClick={toggleSearch}
-                aria-label="Закрыть"
-              >
-                <IoClose size={22} />
-              </button>
-            </>
-          ) : (
-            <>
-              <Link href="/" className="flex-shrink-0 hover:opacity-90 transition-opacity duration-200">
-                <Image
-                  className="h-9 w-auto"
-                  src="/logo/1.png"
-                  alt="PSGamezz Logo"
-                  width={120}
-                  height={54}
-                  priority
-                />
-              </Link>
-              <div className="flex-1" />
-              <button
-                className="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
-                onClick={toggleSearch}
-                aria-label="Поиск"
-              >
-                <IoSearch size={22} />
-              </button>
-            </>
-          )}
+        {/* ── MOBILE HEADER — centered logo ── */}
+        <div className="flex md:hidden items-center justify-center h-14">
+          <Link href="/" className="hover:opacity-90 transition-opacity duration-200">
+            <Image
+              className="h-9 w-auto"
+              src="/logo/1.png"
+              alt="PSGamezz Logo"
+              width={120}
+              height={54}
+              priority
+            />
+          </Link>
         </div>
 
         {/* ── DESKTOP HEADER ── */}
@@ -271,10 +223,32 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile search results (shown below header when query is active) */}
-      {mobileSearchOpen && query && (
-        <div className="md:hidden px-4 pb-2 bg-[#1a1b26] animate-fade-in">
-          <div className="bg-[#252732] rounded-xl shadow-xl border border-white/10 max-h-[60vh] overflow-y-auto">
+      {/* ── MOBILE: transparent search bar below logo ── */}
+      <div className="md:hidden px-4 pb-3">
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <IoSearch className="text-white/40" size={16} />
+          </div>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Поиск игр..."
+            className="w-full pl-9 pr-9 py-2.5 bg-transparent border border-white/20 rounded-xl text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] transition-all duration-200"
+          />
+          {query && (
+            <button
+              onClick={() => setQuery("")}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-white/40 hover:text-white/70"
+            >
+              <IoClose size={16} />
+            </button>
+          )}
+        </div>
+
+        {/* Mobile search results */}
+        {query && (
+          <div className="mt-2 bg-[#252732] rounded-xl shadow-xl border border-white/10 max-h-[60vh] overflow-y-auto animate-fade-in">
             {loading ? (
               <div className="p-3 text-center text-white/60 text-sm">Загрузка...</div>
             ) : results.length > 0 ? (
@@ -306,8 +280,8 @@ const Header = () => {
               <div className="p-3 text-center text-white/60 text-sm">Ничего не найдено</div>
             )}
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Desktop tablet menu (md only, hides at lg which shows inline nav) */}
       {menuOpen && (
@@ -316,34 +290,10 @@ const Header = () => {
           className="md:flex lg:hidden border-t border-white/10 bg-[#1a1b26] animate-fade-in"
         >
           <nav className="flex flex-col py-4 w-full">
-            <Link
-              href="/"
-              onClick={() => setMenuOpen(false)}
-              className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200"
-            >
-              Главная
-            </Link>
-            <Link
-              href="/games"
-              onClick={() => setMenuOpen(false)}
-              className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200"
-            >
-              Игры
-            </Link>
-            <Link
-              href="/subscription"
-              onClick={() => setMenuOpen(false)}
-              className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#f59e0b] transition-all duration-200"
-            >
-              Подписки
-            </Link>
-            <Link
-              href="/basket"
-              onClick={() => setMenuOpen(false)}
-              className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200"
-            >
-              Корзина
-            </Link>
+            <Link href="/" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200">Главная</Link>
+            <Link href="/games" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200">Игры</Link>
+            <Link href="/subscription" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#f59e0b] transition-all duration-200">Подписки</Link>
+            <Link href="/basket" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200">Корзина</Link>
           </nav>
         </div>
       )}

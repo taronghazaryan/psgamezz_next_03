@@ -17,6 +17,17 @@ export default function TelegramInit() {
     if (typeof tg.setBackgroundColor === "function") tg.setBackgroundColor("#0d0e14");
     if (typeof tg.setBottomBarColor === "function") tg.setBottomBarColor("#0d0e14");
 
+    // Explicitly push safe-area values to CSS vars (more reliable than the auto-set ones in older clients)
+    const applyInsets = () => {
+      const top = tg.safeAreaInset?.top ?? tg.contentSafeAreaInset?.top ?? 0;
+      const bottom = tg.safeAreaInset?.bottom ?? 0;
+      document.documentElement.style.setProperty("--tg-safe-area-inset-top", `${top}px`);
+      document.documentElement.style.setProperty("--tg-safe-area-inset-bottom", `${bottom}px`);
+    };
+    applyInsets();
+    tg.onEvent?.("safeAreaChanged", applyInsets);
+    tg.onEvent?.("contentSafeAreaChanged", applyInsets);
+
     // Request true fullscreen only on mobile Telegram (not Desktop/Web clients)
     const mobilePlatforms = ["ios", "android", "android_x"];
     if (
