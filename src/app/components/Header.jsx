@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { IoSearch, IoMenu, IoClose } from "react-icons/io5";
+import { IoSearch, IoClose } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useBasket } from "../context/BasketContext";
 import { searchGames } from "../api/games";
+import { IoMenu } from "react-icons/io5";
 
 const Header = () => {
   const pathname = usePathname();
@@ -74,11 +75,37 @@ const Header = () => {
   };
 
   return (
-    // <header className="sticky top-0 z-50 w-full bg-[#1a1b26] border-b border-white/10 shadow-lg"></header>
     <header className="relative z-50 w-full bg-[#1a1b26] border-b border-white/10 shadow-lg">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 md:h-24">
-          
+
+        {/* ── MOBILE HEADER (Telegram-optimised, no hamburger — navigation via BottomNav) ── */}
+        <div
+          className="flex md:hidden items-center justify-between h-14"
+          style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
+        >
+          <Link href="/" className="flex-shrink-0 hover:opacity-90 transition-opacity duration-200">
+            <Image
+              className="h-9 w-auto"
+              src="/logo/1.png"
+              alt="PSGamezz Logo"
+              width={120}
+              height={54}
+              priority
+            />
+          </Link>
+
+          <button
+            className="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
+            onClick={toggleSearch}
+            aria-label="Поиск"
+          >
+            {mobileSearchOpen ? <IoClose size={22} /> : <IoSearch size={22} />}
+          </button>
+        </div>
+
+        {/* ── DESKTOP HEADER ── */}
+        <div className="hidden md:flex items-center justify-between h-24">
+          {/* Hamburger for tablet (md, hides at lg) */}
           <button
             className="lg:hidden p-3 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
             onClick={toggleMenu}
@@ -87,13 +114,13 @@ const Header = () => {
             {menuOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
           </button>
 
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             onClick={() => setMenuOpen(false)}
             className="flex-shrink-0 hover:opacity-90 transition-opacity duration-200"
           >
             <Image
-              className="h-12 w-auto md:h-16 lg:h-20"
+              className="h-16 w-auto lg:h-20"
               src="/logo/1.png"
               alt="PSGamezz Logo"
               width={160}
@@ -103,11 +130,11 @@ const Header = () => {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-2 xl:gap-4">
-            <Link 
-              href="/games" 
+            <Link
+              href="/games"
               className={`relative px-6 py-3 rounded-xl font-semibold text-sm xl:text-base transition-all duration-300 ${
-                pathname === "/games" 
-                  ? "bg-[#6366f1] text-white" 
+                pathname === "/games"
+                  ? "bg-[#6366f1] text-white"
                   : "text-white/80 hover:text-white hover:bg-white/10"
               }`}
             >
@@ -123,11 +150,11 @@ const Header = () => {
               </div>
             </Link>
 
-            <Link 
-              href="/subscription" 
+            <Link
+              href="/subscription"
               className={`relative px-6 py-3 rounded-xl font-semibold text-sm xl:text-base transition-all duration-300 ${
-                pathname === "/subscription" 
-                  ? "bg-[#f59e0b] text-white" 
+                pathname === "/subscription"
+                  ? "bg-[#f59e0b] text-white"
                   : "text-white/80 hover:text-white hover:bg-white/10"
               }`}
             >
@@ -193,16 +220,8 @@ const Header = () => {
             </div>
           </div>
 
-          <button
-            className="lg:hidden p-3 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
-            onClick={toggleSearch}
-            aria-label="Поиск"
-          >
-            <IoSearch size={24} />
-          </button>
-
-          <Link 
-            href="/basket" 
+          <Link
+            href="/basket"
             onClick={() => setMenuOpen(false)}
             className="relative flex items-center gap-2 px-4 py-3 rounded-xl hover:bg-white/10 transition-all duration-200 group"
           >
@@ -225,13 +244,15 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Mobile search dropdown */}
       {mobileSearchOpen && (
-        <div className="lg:hidden border-t border-white/10 px-4 py-4 animate-fade-in bg-[#1a1b26]">
+        <div className="md:hidden border-t border-white/10 px-4 py-3 animate-fade-in bg-[#1a1b26]">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <IoSearch className="text-white/40" />
             </div>
             <input
+              autoFocus
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -239,7 +260,7 @@ const Header = () => {
               className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] focus:bg-white/15 focus:ring-2 focus:ring-[#6366f1]/20 transition-all duration-200"
             />
             {query && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-[#252732] rounded-xl shadow-xl border border-white/10 max-h-[300px] overflow-y-auto z-50">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-[#252732] rounded-xl shadow-xl border border-white/10 max-h-[60vh] overflow-y-auto z-50">
                 {loading ? (
                   <div className="p-3 text-center text-white/60 text-sm">Загрузка...</div>
                 ) : results.length > 0 ? (
@@ -248,7 +269,7 @@ const Header = () => {
                       <Link
                         key={game.id}
                         href={`/games/${game.slug}`}
-                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-all"
+                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-all"
                         onClick={() => handleSelectGame(game)}
                       >
                         <Image
@@ -276,36 +297,37 @@ const Header = () => {
         </div>
       )}
 
+      {/* Desktop tablet menu (md only, hides at lg which shows inline nav) */}
       {menuOpen && (
         <div
           ref={menuRef}
-          className="lg:hidden border-t border-white/10 bg-[#1a1b26] animate-fade-in"
+          className="md:flex lg:hidden border-t border-white/10 bg-[#1a1b26] animate-fade-in"
         >
-          <nav className="flex flex-col py-4">
-            <Link 
-              href="/" 
-              onClick={() => setMenuOpen(false)} 
+          <nav className="flex flex-col py-4 w-full">
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
               className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200"
             >
               Главная
             </Link>
-            <Link 
-              href="/games" 
-              onClick={() => setMenuOpen(false)} 
+            <Link
+              href="/games"
+              onClick={() => setMenuOpen(false)}
               className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200"
             >
               Игры
             </Link>
-            <Link 
-              href="/subscription" 
-              onClick={() => setMenuOpen(false)} 
+            <Link
+              href="/subscription"
+              onClick={() => setMenuOpen(false)}
               className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#f59e0b] transition-all duration-200"
             >
               Подписки
             </Link>
-            <Link 
-              href="/basket" 
-              onClick={() => setMenuOpen(false)} 
+            <Link
+              href="/basket"
+              onClick={() => setMenuOpen(false)}
               className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200"
             >
               Корзина

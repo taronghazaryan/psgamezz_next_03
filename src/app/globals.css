@@ -9,6 +9,33 @@ body {
   color: #ffffff;
   overflow-x: hidden;
   background: #0d0e14;
+  /* Support Telegram WebApp safe areas */
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Telegram viewport CSS variable fallbacks (overridden by telegram-web-app.js at runtime) */
+:root {
+  --tg-viewport-height: 100vh;
+  --tg-viewport-stable-height: 100vh;
+}
+
+/* Remove Telegram Mini App rounded-corner clipping */
+html, body {
+  border-radius: 0 !important;
+}
+
+/* Improve tap targets for mobile / Telegram */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent text selection on tap for UI elements */
+nav, header {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

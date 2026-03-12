@@ -1,9 +1,48 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaTelegramPlane, FaYoutube, FaVk } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="relative mt-auto w-full bg-[#1a1b26] border-t border-white/10 shadow-lg">
+    <>
+      {/* ── Mobile footer ── */}
+      <footer className="md:hidden w-full bg-[#1a1b26] border-t border-white/10 pb-[calc(64px+env(safe-area-inset-bottom,0px))]">
+        <div className="px-5 pt-6 pb-2 flex flex-col items-center gap-5 text-center">
+
+          {/* Working hours */}
+          <p className="text-white/50 text-xs">Выдаём заказы с 09:00 до 00:00 (МСК)</p>
+
+          {/* Links grid */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+            <Link href="/games" className="text-white/60 text-sm hover:text-white transition-colors">Игры</Link>
+            <Link href="/subscription" className="text-white/60 text-sm hover:text-white transition-colors">Подписки</Link>
+            <a href="https://t.me/psgamezz" target="_blank" rel="noopener noreferrer" className="text-white/60 text-sm hover:text-white transition-colors">Поддержка</a>
+            <a href="https://disk.yandex.ru/i/b8Up-MiVGcM-Og" target="_blank" rel="noopener noreferrer" className="text-white/60 text-sm hover:text-white transition-colors">Оферта</a>
+          </div>
+
+          {/* Social icons */}
+          <div className="flex gap-3 justify-center">
+            <a href="https://t.me/psgamezz" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+               className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center border border-white/10 active:scale-95 transition-transform">
+              <FaTelegramPlane className="text-white text-base" />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+               className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center border border-white/10 active:scale-95 transition-transform">
+              <FaYoutube className="text-white text-base" />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="VKontakte"
+               className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center border border-white/10 active:scale-95 transition-transform">
+              <FaVk className="text-white text-base" />
+            </a>
+          </div>
+
+          {/* Copyright */}
+          <p className="text-white/30 text-xs">© 2025 psgamezz.ru. Все права защищены.</p>
+        </div>
+      </footer>
+
+      {/* ── Desktop footer ── */}
+      <footer className="relative mt-auto w-full bg-[#1a1b26] border-t border-white/10 shadow-lg hidden md:block">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           
@@ -16,7 +55,7 @@ const Footer = () => {
               className="mb-2"
             />
             <p className="text-white/80 text-base leading-relaxed max-w-md">
-              Выдаём заказы с 10:00 до 23:00 (МСК)
+              Выдаём заказы с 09:00 до 00:00 (МСК)
             </p>
             <div className="h-px bg-white/20 w-full my-2"></div>
             <p className="text-white/60 text-sm">
@@ -177,6 +216,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 
