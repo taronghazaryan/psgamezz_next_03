@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useBasket } from "../context/BasketContext";
 import Image from "next/image";
 
@@ -13,7 +13,7 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 	const basket = basketContext?.basket || [];
 	const addToBasket = basketContext?.addToBasket || (() => { });
 
-	const consoleNames = consoleTypes.map((c) => c.name);
+	const consoleNames = useMemo(() => consoleTypes.map((c) => c.name), [consoleTypes]);
 
 	const featuress = [
 		{
@@ -61,14 +61,17 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 		return c ? c.name : null;
 	};
 
-	const filteredSubs = subscriptions
-		.filter((sub) =>
-			sub.consoles.some((consoleId) => findConsoleNameById(consoleId) === psType)
-		)
-		.sort((a, b) => {
-			const tiersOrder = ["Essential", "Extra", "Deluxe"];
-			return tiersOrder.indexOf(a.level) - tiersOrder.indexOf(b.level);
-		});
+	const filteredSubs = useMemo(() =>
+		subscriptions
+			.filter((sub) =>
+				sub.consoles.some((consoleId) => findConsoleNameById(consoleId) === psType)
+			)
+			.sort((a, b) => {
+				const tiersOrder = ["Essential", "Extra", "Deluxe"];
+				return tiersOrder.indexOf(a.level) - tiersOrder.indexOf(b.level);
+			}),
+		[subscriptions, psType, consoleTypes] // eslint-disable-line react-hooks/exhaustive-deps
+	);
 
 	useEffect(() => {
 		if (filteredSubs.length > 0 && !selectedTier) {

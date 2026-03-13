@@ -39,19 +39,8 @@ export default function GamesSwiper() {
   }
 
   useEffect(() => {
-    async function loadData(url = "/api/games/?has_discount=true") {
+    async function loadData() {
       try {
-        let saleCandidates = [];
-        let nextUrl = undefined;
-        for (let i = 0; i < 5 && saleCandidates.length < 25; i++) {
-          const { results, next } = await fetchGamesPage(url);
-          saleCandidates = saleCandidates.concat(results);
-          if (!next) break;
-          nextUrl = next;
-        }
-
-
-
         const newGames = await loadPages(3);
         setNewProducts(shuffleArray(newGames).slice(0, 50));
       } catch (e) {

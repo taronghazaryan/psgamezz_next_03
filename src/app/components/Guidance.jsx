@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { useBasket } from "../context/BasketContext";
 import HowToUse from "./howtouse";
@@ -13,8 +13,11 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
   const [psType, setPsType] = useState(null);
   const { basket, addToBasket } = useBasket();
 
-  const availableConsoles = consoleTypes.filter(consoleItem =>
-    subscriptions.some(sub => sub.consoles.includes(consoleItem.id))
+  const availableConsoles = useMemo(() =>
+    consoleTypes.filter(consoleItem =>
+      subscriptions.some(sub => sub.consoles.includes(consoleItem.id))
+    ),
+    [consoleTypes, subscriptions]
   );
 
   useEffect(() => {
@@ -23,20 +26,23 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
     }
   }, [availableConsoles, psType]);
 
-  const durations = subscriptions
-    .filter(sub =>
-      sub.consoles.includes(
-        availableConsoles.find(c => c.name === psType)?.id
+  const durations = useMemo(() =>
+    subscriptions
+      .filter(sub =>
+        sub.consoles.includes(
+          availableConsoles.find(c => c.name === psType)?.id
+        )
       )
-    )
-    .flatMap(sub =>
-      sub.periods.map(period => ({
-        id: period.id,
-        value: String(period.months),
-        label: `${period.months} мес.`,
-        price: Number(period.price),
-      }))
-    );
+      .flatMap(sub =>
+        sub.periods.map(period => ({
+          id: period.id,
+          value: String(period.months),
+          label: `${period.months} мес.`,
+          price: Number(period.price),
+        }))
+      ),
+    [subscriptions, availableConsoles, psType]
+  );
 
   useEffect(() => {
     if (durations.length > 0 && !selectedDuration) {

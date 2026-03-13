@@ -59,14 +59,12 @@ export default function Products() {
         });
         setSaleProducts(shuffleArray(filteredSale).slice(0, 25));
 
-        const popular = await loadPages(3);
-        const popularSorted = popular
+        const allGames = await loadPages(3);
+        const popularSorted = [...allGames]
           .sort((a, b) => (b.rate || 0) - (a.rate || 0))
           .slice(0, 50);
         setPopularProducts(popularSorted);
-
-        const newGames = await loadPages(3);
-        setNewProducts(shuffleArray(newGames).slice(0, 50));
+        setNewProducts(shuffleArray([...allGames]).slice(0, 50));
       } catch (e) {
         setError(e.message || "Ошибка загрузки данных");
       } finally {

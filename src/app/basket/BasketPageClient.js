@@ -299,11 +299,18 @@ const BasketPageClient = () => {
 
             <div className="p-6 md:p-8 flex flex-col gap-4 overflow-y-auto">
               <h2 className="text-2xl md:text-3xl font-black">Правила</h2>
-              <div className="text-white/70 text-sm leading-relaxed space-y-3">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+              <div className="text-white/80 text-sm leading-relaxed space-y-2">
+                <p>⛔️ не менять логин/ пароль на аккаунте</p>
+                <p>⛔️ не передавать данные аккаунта 3м лицам</p>
+                <p>⛔️ не ставить двухфакторную аутентификацию</p>
+                <p>⛔️ не входить на любых других устройствах кроме консоли на которую приобретается игра</p>
+                <p>⛔️ не проводить любые другие манипуляции на аккаунте.</p>
+                <p>⛔️ запрещается перенос выданного профиля на консоль другого поколения;</p>
+                <p className="text-white font-semibold pt-1">Пользоваться строго согласно инструкциям:</p>
+                <p>✅ использовать аккаунт строго на 1-й консоли!</p>
+                <p>✅ Перенос профиля с одной консоли на другую возможен только после согласования с администраторами и при наличии у вас старой консоли (подробные условия переноса уточняйте у администраторов).</p>
+                <p>✅ не устанавливать какие-либо игры на выданный аккаунт</p>
+                <p className="text-red-400 font-semibold pt-1">❗️В случае нарушения данных правил, буду вынужден изъять аккаунт без возвращения денежных средств.</p>
               </div>
 
               <div className="flex gap-3 mt-2">
