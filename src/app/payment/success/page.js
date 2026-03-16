@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 export default function PaymentSuccessRedirect() {
     const router = useRouter();
+    console.log(router);
 
     useEffect(() => {
         router.replace('/?payment=success');

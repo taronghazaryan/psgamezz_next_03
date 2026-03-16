@@ -10,31 +10,56 @@ import PaymentHandler from './components/PaymentHandler';
 import SuccessModal from './components/SuccessModal';
 import FailModal from './components/FailModal';
 
+
 export default function HomepageClient() {
   const router = useRouter();
   const { clearBasket } = useBasket();
-
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showFailModal, setShowFailModal] = useState(false);
+  const [invoiceId, setInvoiceId] = useState(null);
 
-  // Чтение query из URL один раз при монтировании
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const payment = params.get('payment');
+    const pid = params.get('pid');
 
-    if (payment === 'success') {
-      setShowSuccessModal(true);
-      clearBasket();
-      // очищаем query, чтобы повторный рендер не открывал снова
-      const url = new URL(window.location);
-      url.searchParams.delete('payment');
-      window.history.replaceState({}, '', url);
-    } else if (payment === 'failed') {
-      setShowFailModal(true);
-    }
+    if (!pid) return; 
+
+    console.log("Fetching payment status for pid:", pid);
+
+    fetch(`https://psgamezz.ru/api/payment/status/?pid=${pid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then(async (res) => {
+        if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Payment status data:", data);
+
+        if (data.status === "success") {
+          setInvoiceId(data.inv_id);
+          setShowSuccessModal(true);
+          clearBasket();
+        } else {
+          setShowFailModal(true);
+        }
+      })
+      .catch((err) => {
+        console.error("Payment status fetch error:", err);
+        setShowFailModal(true);
+      })
+      .finally(() => {
+        const url = new URL(window.location);
+        url.searchParams.delete('pid');
+        window.history.replaceState({}, '', url);
+      });
   }, [clearBasket]);
 
-  // Блокировка скролла при открытой модалке
+
   useEffect(() => {
     document.body.style.overflow = showSuccessModal || showFailModal ? 'hidden' : 'auto';
   }, [showSuccessModal, showFailModal]);
@@ -61,7 +86,7 @@ export default function HomepageClient() {
         onFail={() => setShowFailModal(true)}
       />
 
-      {showSuccessModal && <SuccessModal onClose={handleCloseModal} />}
+      {showSuccessModal && <SuccessModal invoiceId={invoiceId} onClose={handleCloseModal} />}
       {showFailModal && <FailModal onClose={handleCloseModal} />}
     </div>
   );

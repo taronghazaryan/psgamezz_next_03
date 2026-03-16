@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-export default function SuccessModal({ onClose }) {
+export default function SuccessModal({ invoiceId, onClose }) {
   const router = useRouter();
 
   // блокировка скролла
@@ -33,7 +33,16 @@ export default function SuccessModal({ onClose }) {
         </div>
 
         <p className="text-white/70 text-base text-center leading-relaxed">
-          Чтобы получить вашу игру(ы) или подписку, а также инструкции по активации, проверьте электронную почту, которую вы указали при оплате. На этот адрес был отправлен код подтверждения. Пожалуйста, сообщите этот код нашему менеджеру в Telegram для проверки.
+          Чтобы получить вашу игру(ы) или подписку, а также инструкции по активации, пожалуйста, напишите нашему менеджеру в Telegram и отправьте ваш код заказа:
+        </p>
+
+        {/* Код заказа с фоном и большим шрифтом */}
+        <div className="mx-auto my-2 px-6 py-3 bg-yellow-500/20 rounded-lg text-center font-bold text-xl md:text-2xl text-yellow-400 select-all">
+          {invoiceId}
+        </div>
+
+        <p className="text-white/50 italic text-center text-sm">
+            Если случайно закроете это окно, не волнуйтесь — ваш код заказа был также отправлен на электронную почту.
         </p>
 
         <div className="flex justify-center">
