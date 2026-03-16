@@ -106,7 +106,7 @@ export default function Hero({ productItem }) {
       <div className="relative w-full min-h-screen bg-[#0d0e14]">
         {/* Background image */}
         <div
-          className="fixed top-0 left-0 w-full h-full bg-cover bg-center  opacity-15"
+          className="fixed top-0 left-0 w-full h-full bg-cover bg-center opacity-15 pointer-events-none"
           style={{
             backgroundImage: `url(${productItem.images?.[0] || "/images/default.jpg"})`,
           }}

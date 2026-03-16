@@ -50,9 +50,13 @@ export default function Hero() {
             <p className="text-white/90 font-medium w-full max-w-xl mb-6 line-clamp-3 text-lg">
               {description}
             </p>
-            <button className="premium-button px-12 py-4 rounded-xl text-lg font-black hover:scale-105 transition-transform duration-300">
+            <a
+              href="https://t.me/ivanitwo"
+              target="_blank"
+              className="premium-button px-12 py-4 rounded-xl text-lg font-black hover:scale-105 transition-transform duration-300 inline-block text-center"
+            >
               Купить от {price}₽
-            </button>
+            </a>
           </div>
         </div>
 

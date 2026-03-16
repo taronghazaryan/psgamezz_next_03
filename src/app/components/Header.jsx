@@ -234,7 +234,7 @@ const Header = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Поиск игр..."
-            className="w-full pl-9 pr-9 py-2.5 bg-transparent border border-white/20 rounded-xl text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] transition-all duration-200"
+            className="w-full pl-9 pr-9 py-2.5 bg-transparent border border-white/20 rounded-xl text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] transition-all duration-200"
           />
           {query && (
             <button
