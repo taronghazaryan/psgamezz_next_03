@@ -34,7 +34,8 @@ export default function FailModal({ onClose }) {
         <div className="flex flex-col gap-3 text-center text-white/70 text-base leading-relaxed">
           <p>К сожалению, произошла ошибка при обработке платежа. Попробуйте повторить попытку или свяжитесь с нашей поддержкой.</p>
           <p className="text-white/50 text-sm">Поддержка работает ежедневно 09:00–23:00 (мск)</p>
-          <p className="text-white/50 text-sm">Свяжитесь с нами: <span className="text-white font-semibold">support@psgamezz.ru</span></p>
+          <p className="text-white/50 text-sm">Свяжитесь с нами: <span className="text-white font-semibold"><a href="https://t.me/ivanitwo"
+              target="_blank">Telegram</a> </span></p>
         </div>
 
         <button
