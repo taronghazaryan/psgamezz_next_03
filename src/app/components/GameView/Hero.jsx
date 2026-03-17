@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronDown, ChevronUp, X } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useBasket } from "../../context/BasketContext";
 
 export default function Hero({ productItem }) {
@@ -11,7 +11,7 @@ export default function Hero({ productItem }) {
   const [activation, setActivation] = useState("с активацией");
   const [openIndex, setOpenIndex] = useState(null);
   const [openTab, setOpenTab] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [displayedMainImage, setDisplayedMainImage] = useState(null);
 
   const questions = [
     {
@@ -99,7 +99,7 @@ export default function Hero({ productItem }) {
     ? "http://psgamezz.ru" + productItem.main_image_url
     : "/images/default.jpg";
 
-  const allImages = [mainImageUrl, ...(productItem.images || [])];
+  const currentMainImage = displayedMainImage || mainImageUrl;
 
   return (
     <>
@@ -117,41 +117,34 @@ export default function Hero({ productItem }) {
           
           {/* Left side - Images - Fixed width */}
           <div className="w-full max-w-[300px] flex-shrink-0 flex flex-col items-center mx-auto lg:mx-0">
-            <div 
-              className="relative w-full cursor-pointer group"
-              onClick={() => setSelectedImage(mainImageUrl)}
-            >
+            <div className="relative w-full">
               <Image
-                src={mainImageUrl}
+                src={currentMainImage}
                 alt={productItem.title}
                 width={300}
                 height={320}
-                className="rounded-3xl w-full h-[300px] md:w-[300px] md:h-[320px] object-cover shadow-2xl border border-white/10 group-hover:border-[#6366f1]/50 transition-all duration-300"
+                className="rounded-3xl w-full h-[300px] md:w-[300px] md:h-[320px] object-cover shadow-2xl border border-white/10"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 rounded-3xl transition-all duration-300 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#6366f1]/80 rounded-full p-3">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                  </svg>
-                </div>
-              </div>
             </div>
             {productItem.images?.length > 0 && (
               <div className="flex flex-wrap justify-center gap-2 mt-3">
                 {productItem.images.map((img, i) => (
                   <div
                     key={i}
-                    className="relative cursor-pointer group"
-                    onClick={() => setSelectedImage(img)}
+                    className="relative cursor-pointer"
+                    onClick={() => setDisplayedMainImage(img)}
                   >
                     <Image
                       src={img}
                       alt={`screenshot ${i + 1}`}
                       width={80}
                       height={80}
-                      className="rounded-lg object-cover border border-white/10 group-hover:border-[#6366f1]/50 transition-all duration-300"
+                      className={`rounded-lg object-cover border transition-all duration-300 ${
+                        currentMainImage === img
+                          ? "border-[#6366f1] opacity-100"
+                          : "border-white/10 opacity-60 hover:opacity-90 hover:border-white/30"
+                      }`}
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 rounded-lg transition-all duration-300"></div>
                   </div>
                 ))}
               </div>
@@ -335,29 +328,6 @@ export default function Hero({ productItem }) {
         </div>
       </div>
 
-      {/* Image Modal */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110 z-10"
-          >
-            <X size={24} className="text-white" />
-          </button>
-          <div className="relative max-w-7xl max-h-[90vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
-            <Image
-              src={selectedImage}
-              alt={productItem.title}
-              fill
-              className="object-contain rounded-xl"
-              sizes="90vw"
-            />
-          </div>
-        </div>
-      )}
     </>
   );
 }

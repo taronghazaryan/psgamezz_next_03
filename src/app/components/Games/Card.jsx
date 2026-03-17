@@ -113,41 +113,41 @@ export default function Card({ activationType, prices, ...product }) {
 
         {/* Content */}
         <div className="flex flex-col gap-1 mt-2">
-          <h3 className="text-white font-bold text-xl md:text-lg max-sm:text-sm">
+          <h3 className="text-white font-bold text-sm">
             {truncateText(normalizedTitle, 20)}
           </h3>
 
-          <div className="flex items-center gap-2 md:gap-1.5 max-sm:gap-1">
-            <Image src="/star.svg" alt="star" width={16} height={16} className="md:w-4 max-sm:w-3" />
-            <span className="text-white font-bold text-sm md:text-xs max-sm:text-[10px]">
+          <div className="flex items-center gap-1.5">
+            <Image src="/star.svg" alt="star" width={13} height={13} />
+            <span className="text-white font-bold text-xs">
               5
             </span>
             {product.consoles?.map((console, idx) => (
-              <span key={idx} className="text-white font-bold md:text-xs max-sm:text-[10px]">
+              <span key={idx} className="text-white font-bold text-xs">
                 {console}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center gap-2 md:gap-1.5 mt-1">
+          <div className="flex items-center gap-2 mt-1">
             {activationPriceData ? (
               <>
-                <p className="text-white text-xl font-bold md:text-lg max-sm:text-sm">
+                <p className="text-white text-base font-bold">
                   {`от ${activationPriceData.discountedPrice}Р`}
                 </p>
                 {hasDiscount && (
                   <>
-                    <p className="text-gray-500 line-through md:text-sm max-sm:text-xs">
+                    <p className="text-gray-500 line-through text-xs">
                       {activationPriceData.basePrice}Р
                     </p>
-                    <div className="bg-red-600 text-white font-bold px-1.5 py-1 rounded-lg text-xs mt-[-10px]">
+                    <div className="bg-red-600 text-white font-bold px-1.5 py-0.5 rounded-lg text-xs">
                       -{Math.round(activationPriceData.sale)}%
                     </div>
                   </>
                 )}
               </>
             ) : (
-              <p className="text-primary text-xl font-bold md:text-lg max-sm:text-sm">
+              <p className="text-primary text-base font-bold">
                 Нет в наличии
               </p>
             )}
