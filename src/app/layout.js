@@ -20,9 +20,10 @@ export default function RootLayout({ children }) {
     <html lang="ru" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <link rel="preload" as="image" href="/img/palmer.png" />
         <Script
           src="https://telegram.org/js/telegram-web-app.js"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
       </head>
       <body className={`overflow-x-hidden ${montserrat.variable} font-montserrat antialiased min-h-screen flex flex-col bg-[#0d0e14]`}>
