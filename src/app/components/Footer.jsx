@@ -30,7 +30,7 @@ const Footer = () => {
                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center border border-white/10 active:scale-95 transition-transform">
               <FaYoutube className="text-white text-base" />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="VKontakte"
+            <a href="https://vk.ru/psgamezz" target="_blank" rel="noopener noreferrer" aria-label="VKontakte"
                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center border border-white/10 active:scale-95 transition-transform">
               <FaVk className="text-white text-base" />
             </a>
@@ -70,7 +70,7 @@ const Footer = () => {
                 href="https://t.me/psgamezz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-white/10 hover:bg-[#6366f1]/30 flex items-center justify-center transition-all duration-200 hover:scale-110 border border-white/10"
+                className="w-12 h-12 rounded-xl bg-white/10 hover:bg-[#229ED9]/30 flex items-center justify-center transition-all duration-200 hover:scale-110 border border-white/10"
                 aria-label="Telegram"
               >
                 <FaTelegramPlane className="text-white text-xl" />
@@ -158,7 +158,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://t.me/ivanitwo"
+                  href="https://vk.ru/psgamezz"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/70 hover:text-white transition-colors duration-200 text-sm block"

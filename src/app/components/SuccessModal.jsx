@@ -33,7 +33,7 @@ export default function SuccessModal({ invoiceId, onClose }) {
         </div>
 
         <p className="text-white/70 text-base text-center leading-relaxed">
-          Чтобы получить вашу игру(ы) или подписку, а также инструкции по активации, пожалуйста, напишите нашему менеджеру в Telegram и отправьте ваш код заказа:
+          Чтобы получить вашу игру(ы) или подписку, а также инструкции по активации, пожалуйста, свяжитесь с нашим менеджером в Telegram или ВКонтакте и отправьте ваш код заказа:
         </p>
 
         {/* Код заказа с фоном и большим шрифтом */}
@@ -45,15 +45,24 @@ export default function SuccessModal({ invoiceId, onClose }) {
             Если случайно закроете это окно, не волнуйтесь — ваш код заказа был также отправлен на электронную почту.
         </p>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-3">
           <a
             href="https://t.me/ivanitwo"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-[#6366f1] hover:bg-[#5555e0] text-white px-6 py-3 rounded-xl font-bold transition-all duration-200 hover:scale-105 shadow-lg"
+            className="flex items-center gap-3 bg-[#229ED9] hover:bg-[#1a8bbf] text-white px-6 py-3 rounded-xl font-bold transition-all duration-200 hover:scale-105 shadow-lg"
           >
             <Image className="h-6 w-6" src="/images/telegram.png" width={24} height={24} alt="telegram" />
-            Написать менеджеру
+            Telegram
+          </a>
+          <a
+            href="https://vk.ru/psgamezz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-[#0077FF] hover:bg-[#0066dd] text-white px-6 py-3 rounded-xl font-bold transition-all duration-200 hover:scale-105 shadow-lg"
+          >
+            <Image className="h-6 w-6" src="/images/vk.png" width={24} height={24} alt="vk" />
+            ВКонтакте
           </a>
         </div>
       </div>
