@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useBasket } from "../context/BasketContext";
 import { searchGames } from "../api/games";
+import Script from "next/script";
 
 const Header = () => {
   const pathname = usePathname();
@@ -66,6 +67,29 @@ const Header = () => {
       className="relative z-50 w-full bg-[#1a1b26] border-b border-white/10 shadow-lg"
       style={{ paddingTop: "var(--tg-safe-area-inset-top, env(safe-area-inset-top, 0px))" }}
     >
+            {/* Яндекс.Метрика */}
+      <Script id="yandex-metrika" strategy="afterInteractive">
+        {`
+          (function(m,e,t,r,i,k,a){
+              m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+              m[i].l=1*new Date();
+              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+          })(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+
+          ym(108035842, 'init', {
+              clickmap:true,
+              trackLinks:true,
+              accurateTrackBounce:true,
+              webvisor:true,
+              ecommerce:"dataLayer"
+          });
+        `}
+      </Script>
+      <noscript>
+        <div>
+          <img src="https://mc.yandex.ru/watch/108035842" style={{ position:"absolute", left:"-9999px" }} alt="" />
+        </div>
+      </noscript>
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
 
         {/* ── MOBILE HEADER — centered logo ── */}
