@@ -45,7 +45,6 @@ const BasketPageClient = () => {
 
     if (isTelegram) {
       window.Telegram.WebApp.openLink(url);
-      window.Telegram.WebApp.close();
     } else {
       window.location.href = url;
     }
