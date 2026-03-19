@@ -30,13 +30,28 @@ export default function TelegramInit() {
 
     // Request true fullscreen only on mobile Telegram (not Desktop/Web clients)
     const mobilePlatforms = ["ios", "android", "android_x"];
-    if (
-      mobilePlatforms.includes(tg.platform) &&
-      typeof tg.requestFullscreen === "function" &&
-      parseFloat(tg.version) >= 7.8
-    ) {
-      tg.requestFullscreen();
-    }
+    const requestFullscreenIfSupported = () => {
+      if (
+        mobilePlatforms.includes(tg.platform) &&
+        typeof tg.requestFullscreen === "function" &&
+        parseFloat(tg.version) >= 7.8
+      ) {
+        tg.requestFullscreen();
+      }
+    };
+
+    requestFullscreenIfSupported();
+
+    // Re-expand and re-request fullscreen when user returns from external link (e.g. after payment)
+    const handleActivated = () => {
+      tg.expand();
+      requestFullscreenIfSupported();
+    };
+    tg.onEvent?.("activated", handleActivated);
+
+    return () => {
+      tg.offEvent?.("activated", handleActivated);
+    };
   }, []);
 
   return null;
