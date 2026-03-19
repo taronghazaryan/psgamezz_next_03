@@ -41,11 +41,14 @@ const BasketPageClient = () => {
   };
 
   const redirectToPayment = (url) => {
-    const form = document.createElement("form");
-    form.method = "POST";
-    form.action = url;
-    document.body.appendChild(form);
-    form.submit();
+    const isTelegram = typeof window !== "undefined" && window.Telegram?.WebApp;
+
+    if (isTelegram) {
+      window.Telegram.WebApp.openLink(url);
+      window.Telegram.WebApp.close();
+    } else {
+      window.location.href = url;
+    }
   };
 
   const handleSubmit = async (e) => {
