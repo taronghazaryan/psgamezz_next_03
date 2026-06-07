@@ -51,12 +51,20 @@ const BasketPageClient = () => {
     }
   };
 
+  const isValidEmail = (value) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     if (!email.trim() || !username.trim()) {
       setError("Пожалуйста, заполните все обязательные поля");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setError("Введите корректный email, например example@mail.com");
       return;
     }
 
@@ -227,8 +235,18 @@ const BasketPageClient = () => {
                     placeholder='example@mail.com'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className='w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl placeholder:text-white/40 text-white focus:outline-none focus:border-[#6366f1] focus:bg-white/10 transition-all'
+                    aria-invalid={email.length > 0 && !isValidEmail(email)}
+                    className={`w-full px-4 py-3 bg-white/5 border rounded-xl placeholder:text-white/40 text-white focus:outline-none focus:bg-white/10 transition-all ${
+                      email.length > 0 && !isValidEmail(email)
+                        ? 'border-red-500 focus:border-red-500'
+                        : 'border-white/20 focus:border-[#6366f1]'
+                    }`}
                   />
+                  {email.length > 0 && !isValidEmail(email) && (
+                    <p className='text-red-400 text-sm mt-1.5'>
+                      Введите корректный email, например example@mail.com
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label className='text-white text-lg font-semibold mb-2 block'>Ваше имя</label>
