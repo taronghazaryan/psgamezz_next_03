@@ -1,11 +1,13 @@
 import axios from "axios";
 
-// Клиентский инстанс. Токена здесь НЕТ — все запросы идут через серверный
-// прокси /api/proxy, который подставляет Authorization на сервере.
+// Прямые запросы к бэкенду. Токен берётся из NEXT_PUBLIC_API_TOKEN
+// (инлайнится в клиентский бандл на этапе сборки).
 const Api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_URL || "https://psgamezz.ru",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
+    Authorization: process.env.NEXT_PUBLIC_API_TOKEN,
   },
 });
 
@@ -15,24 +17,8 @@ const getCSRFToken = () => {
   return match ? match[1] : "";
 };
 
-// Интерцептор запросов: нормализуем URL и заворачиваем в прокси.
+// Интерцептор запросов: добавляем CSRF к POST/PUT/DELETE
 Api.interceptors.request.use((config) => {
-  let url = config.url || "";
-
-  // Абсолютные ссылки на бэкенд (например, поле `next` из пагинации)
-  // приводим к относительным.
-  url = url.replace(/^https?:\/\/psgamezz\.ru/i, "");
-
-  // Всё, что ещё не завёрнуто, отправляем через серверный прокси.
-  if (!url.startsWith("/api/proxy")) {
-    if (!url.startsWith("/")) url = "/" + url;
-    url = "/api/proxy" + url;
-  }
-
-  config.url = url;
-  config.baseURL = ""; // same-origin: запрос идёт на сам Next-сервер
-
-  // CSRF к мутирующим запросам
   const method = config.method?.toLowerCase();
   if (method === "post" || method === "put" || method === "delete") {
     config.headers["X-CSRFToken"] = getCSRFToken();
