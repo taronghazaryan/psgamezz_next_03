@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import GameImage from "../GameImage";
 
 function truncateText(text, maxLength = 30) {
   if (!text) return "";
@@ -85,7 +86,7 @@ export default function Card({ activationType, prices, ...product }) {
       >
         {/* Image */}
         <div className="relative w-full aspect-square overflow-hidden rounded-2xl">
-          <Image
+          <GameImage
             src={product.main_image_url}
             alt={product.title}
             fill

@@ -6,6 +6,7 @@ import BasketItem from "../components/BasketItem";
 import Api from "../connectors";
 import { Trash2, X } from "lucide-react";
 import Image from "next/image";
+import GameImage from "../components/GameImage";
 import Link from "next/link";
 
 
@@ -197,7 +198,7 @@ const BasketPageClient = () => {
                     key={index} 
                     className="flex items-center gap-4 premium-card rounded-xl p-3 border border-white/10"
                   >
-                    <Image
+                    <GameImage
                       src={item.main_image_url || item.img}
                       alt={item.title}
                       width={60}
