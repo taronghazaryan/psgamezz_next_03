@@ -5,7 +5,7 @@ const Api = axios.create({
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
-    Authorization: "dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y*w$$XhLg",
+    Authorization: "dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y*w$XhLg",
   },
 });
 
