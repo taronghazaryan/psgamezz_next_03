@@ -5,6 +5,7 @@ import { IoSearch, IoClose, IoMenu } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import GameImage from "./GameImage";
 import { useBasket } from "../context/BasketContext";
 import { searchGames } from "../api/games";
 import Script from "next/script";
@@ -199,7 +200,7 @@ const Header = () => {
                           className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/10 transition-all duration-200 group"
                           onClick={() => handleSelectGame(game)}
                         >
-                          <Image
+                          <GameImage
                             src={game.main_image_url}
                             alt={game.title}
                             width={60}
@@ -284,7 +285,7 @@ const Header = () => {
                     className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-all"
                     onClick={() => handleSelectGame(game)}
                   >
-                    <Image
+                    <GameImage
                       src={game.main_image_url}
                       alt={game.title}
                       width={50}

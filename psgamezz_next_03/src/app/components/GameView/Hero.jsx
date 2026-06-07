@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import GameImage from "../GameImage";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useBasket } from "../../context/BasketContext";
 
@@ -118,7 +119,7 @@ export default function Hero({ productItem }) {
           {/* Left side - Images - Fixed width */}
           <div className="w-full max-w-[300px] flex-shrink-0 flex flex-col items-center mx-auto lg:mx-0">
             <div className="relative w-full">
-              <Image
+              <GameImage
                 src={currentMainImage}
                 alt={productItem.title}
                 width={300}

@@ -5,9 +5,10 @@ import ReviewsSwiper from "../../components/GameView/ReviewsSwiper";
 import axios from "axios";
 
 const API_HEADERS = {
-  Authorization: 'dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y',
+  Authorization: process.env.API_TOKEN,
 };
-const API_URL = "https://psgamezz.ru/api/games/";
+const BACKEND_URL = process.env.BACKEND_URL || "https://psgamezz.ru";
+const API_URL = `${BACKEND_URL}/api/games/`;
 
 // функция для получения одной игры по slug
 async function getGameBySlug(slug) {
@@ -36,12 +37,12 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
 
   const response = await fetch(
-    `https://psgamezz.ru/api/games/?slug=${slug}`,
+    `${API_URL}?slug=${slug}`,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y"
+        "Authorization": process.env.API_TOKEN,
       },
       next: { revalidate: 60 },
     }

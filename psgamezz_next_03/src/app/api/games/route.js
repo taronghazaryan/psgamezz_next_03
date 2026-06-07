@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const headers = {
-    Authorization: 'dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y',
+    Authorization: process.env.API_TOKEN,
 };
 
 // GET /api/games
 export async function GET(req) {
-    const url = 'https://psgamezz.ru/api/games/';
+    const url = `${process.env.BACKEND_URL || 'https://psgamezz.ru'}/api/games/`;
     try {
         const res = await axios.get(url, { headers });
         const results = res.data.results.map(game => ({

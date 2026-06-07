@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import GameImage from "./GameImage";
 import { useBasket } from "../context/BasketContext";
 
 const BasketItem = ({ item, index }) => {
@@ -22,13 +22,13 @@ const BasketItem = ({ item, index }) => {
         />
 
         <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 flex-shrink-0 rounded-xl overflow-hidden">
-          <Image
+          <GameImage
             src={imgSrc}
             alt={item.title || "Товар"}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 80px, 128px"
-            unoptimized={imgSrc.startsWith("http")}
+            unoptimized={!!imgSrc && imgSrc.startsWith("http")}
           />
         </div>
 
