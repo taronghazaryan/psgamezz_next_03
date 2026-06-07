@@ -1,0 +1,58 @@
+"use client";
+
+import { useEffect } from "react";
+
+export default function TelegramInit() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+
+    // Signal the app is ready and expand to full available height
+    tg.ready();
+    tg.expand();
+
+    // Match app dark theme with Telegram's header / background
+    if (typeof tg.setHeaderColor === "function") tg.setHeaderColor("#0d0e14");
+    if (typeof tg.setBackgroundColor === "function") tg.setBackgroundColor("#0d0e14");
+    if (typeof tg.setBottomBarColor === "function") tg.setBottomBarColor("#0d0e14");
+
+    // Explicitly push safe-area values to CSS vars (more reliable than the auto-set ones in older clients)
+    const applyInsets = () => {
+      const top = tg.safeAreaInset?.top ?? tg.contentSafeAreaInset?.top ?? 0;
+      const bottom = tg.safeAreaInset?.bottom ?? 0;
+      document.documentElement.style.setProperty("--tg-safe-area-inset-top", `${top}px`);
+      document.documentElement.style.setProperty("--tg-safe-area-inset-bottom", `${bottom}px`);
+    };
+    applyInsets();
+    tg.onEvent?.("safeAreaChanged", applyInsets);
+    tg.onEvent?.("contentSafeAreaChanged", applyInsets);
+
+    // Request true fullscreen only on mobile Telegram (not Desktop/Web clients)
+    const mobilePlatforms = ["ios", "android", "android_x"];
+    const requestFullscreenIfSupported = () => {
+      if (
+        mobilePlatforms.includes(tg.platform) &&
+        typeof tg.requestFullscreen === "function" &&
+        parseFloat(tg.version) >= 7.8
+      ) {
+        tg.requestFullscreen();
+      }
+    };
+
+    requestFullscreenIfSupported();
+
+    // Re-expand and re-request fullscreen when user returns from external link (e.g. after payment)
+    const handleActivated = () => {
+      tg.expand();
+      requestFullscreenIfSupported();
+    };
+    tg.onEvent?.("activated", handleActivated);
+
+    return () => {
+      tg.offEvent?.("activated", handleActivated);
+    };
+  }, []);
+
+  return null;
+}
