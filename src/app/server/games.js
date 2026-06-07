@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const headers = {
-  Authorization: 'dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y*w$$XhLg',
+  Authorization: 'dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y*w$XhLg',
 };
 
 const API_URL = 'https://psgamezz.ru/api/games/';
