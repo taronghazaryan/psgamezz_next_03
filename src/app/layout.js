@@ -15,6 +15,16 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+// Базовые метаданные для всех страниц (og:type, og:site_name наследуются).
+export const metadata = {
+  metadataBase: new URL("https://psgamezz.ru"),
+  openGraph: {
+    type: "website",
+    siteName: "PSGamezz",
+    locale: "ru_RU",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ru" suppressHydrationWarning>
