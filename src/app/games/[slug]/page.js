@@ -41,7 +41,7 @@ export async function generateMetadata({ params }) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y*w$$XhLg"
+        "Authorization": "dQbLtO9jVjPXZYVWr!xbUc%O8k%yNgOQahOoXZjWivr5FFoN!BZU*619Y*w$XhLg"
       },
       next: { revalidate: 60 },
     }
