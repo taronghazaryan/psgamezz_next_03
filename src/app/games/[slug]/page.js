@@ -61,16 +61,20 @@ export async function generateMetadata({ params }) {
   const title = item?.title || "Магазин игр";
   const description = item?.about || "Описание игры отсутствует";
 
-  const imageUrl = item?.main_image_url?.startsWith("http")
-    ? item.main_image_url
-    : item?.main_image_url
-    ? `http://psgamezz.ru${item.main_image_url}`
-    : "http://psgamezz.ru/images/default.jpg";
+  // og:image обязан быть по https — соцсети игнорируют http-картинку на https-странице.
+  const rawImage = item?.main_image_url
+    ? item.main_image_url.startsWith("http")
+      ? item.main_image_url
+      : `${BACKEND_URL}${item.main_image_url}`
+    : `${BACKEND_URL}/images/default.jpg`;
+  const imageUrl = rawImage.replace(/^http:\/\//i, "https://");
 
   return {
     title,
     description,
     openGraph: {
+      type: "website",
+      url: `https://psgamezz.ru/games/${slug}`,
       title,
       description,
       images: [

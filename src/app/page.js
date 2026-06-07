@@ -9,8 +9,8 @@ export const metadata = {
     images: [
       {
         url: "https://psgamezz.ru/logo/1.png",
-        width: 1200,
-        height: 630,
+        width: 1500,
+        height: 900,
         alt: "PSGamezz — Игры и подписки для PlayStation",
       },
     ],
