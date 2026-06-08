@@ -36,27 +36,36 @@ async function getNewGames() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
-  const response = await fetch(
-    `${API_URL}?slug=${slug}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": process.env.API_TOKEN,
-      },
-      next: { revalidate: 60 },
+  const fallbackMeta = {
+    title: "Игра не найдена",
+    description: "Такой игры нет в базе",
+  };
+
+  let item;
+  try {
+    const response = await fetch(
+      `${API_URL}?slug=${slug}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": process.env.API_TOKEN,
+        },
+        next: { revalidate: 60 },
+      }
+    );
+
+    if (!response.ok) {
+      return fallbackMeta;
     }
-  );
 
-  if (!response.ok) {
-    return {
-      title: "Игра не найдена",
-      description: "Такой игры нет в базе",
-    };
+    const game = await response.json();
+    item = game.results?.[0];
+  } catch (e) {
+    // Бэкенд недоступен — не валим рендер страницы, отдаём фолбэк-метаданные.
+    console.error("generateMetadata error:", e.code || e.message);
+    return fallbackMeta;
   }
-
-  const game = await response.json();
-  const item = game.results?.[0];
 
   const title = item?.title || "Магазин игр";
   const description = item?.about || "Описание игры отсутствует";
