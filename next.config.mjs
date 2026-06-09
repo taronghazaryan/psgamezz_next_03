@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    // Оптимизатор Next отключён: он фетчил исходники картинок через nginx
+    // (browser→nginx→оптимизатор→nginx→/media), петля забивала воркеры nginx
+    // и вешала 443. Теперь картинки отдаются напрямую с /media, без петли.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
