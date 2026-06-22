@@ -218,7 +218,7 @@ const Header = () => {
                           <div className="flex-1 min-w-0">
                             <p className="font-semibold text-white group-hover:text-[#0047ff] transition-colors truncate">{game.title}</p>
                             <p className="text-sm text-white/60">
-                              от {game.prices?.without_activation?.[0]?.PS4 || game.prices?.without_activation?.[0]?.PS5 || "—"} ₽
+                              {game.prices?.without_activation?.[0]?.PS4 || game.prices?.without_activation?.[0]?.PS5 || "—"} ₽
                             </p>
                           </div>
                         </Link>
@@ -304,7 +304,7 @@ const Header = () => {
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-white text-sm truncate">{game.title}</p>
                       <p className="text-xs text-white/60">
-                        от {game.prices?.without_activation?.[0]?.PS4 || game.prices?.without_activation?.[0]?.PS5 || "—"} ₽
+                        {game.prices?.without_activation?.[0]?.PS4 || game.prices?.without_activation?.[0]?.PS5 || "—"} ₽
                       </p>
                     </div>
                   </Link>

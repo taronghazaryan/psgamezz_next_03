@@ -55,7 +55,7 @@ export default function Hero() {
               target="_blank"
               className="premium-button px-12 py-4 rounded-xl text-lg font-black hover:scale-105 transition-transform duration-300 inline-block text-center"
             >
-              Купить от {price}₽
+              Купить {price}₽
             </a>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function Hero() {
                   {item.description}
                 </p>
                 <button className="premium-button w-full py-2 rounded-lg text-xl max-sm:text-sm text-black font-black">
-                  Купить от {item.price}₽
+                  Купить {item.price}₽
                 </button>
               </div>
             </SwiperSlide>

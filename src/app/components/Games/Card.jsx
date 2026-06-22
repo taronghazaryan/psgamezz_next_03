@@ -134,7 +134,7 @@ export default function Card({ activationType, prices, ...product }) {
             {activationPriceData ? (
               <>
                 <p className="text-white text-base font-bold">
-                  {`от ${activationPriceData.discountedPrice}Р`}
+                  {`${activationPriceData.discountedPrice}Р`}
                 </p>
                 {hasDiscount && (
                   <>
