@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import GameImage from "../GameImage";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Zap, ShieldCheck, Headset, FileText } from "lucide-react";
 import { useBasket } from "../../context/BasketContext";
 
 export default function Hero({ productItem }) {
@@ -253,6 +253,26 @@ export default function Hero({ productItem }) {
                   {alreadyInBasket ? "Уже в корзине" : "В корзину"}
                 </button>
               </div>
+            </div>
+
+            {/* Гарантии */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              {[
+                { Icon: Zap, title: "Моментально", text: "Выдача после оплаты" },
+                { Icon: ShieldCheck, title: "Гарантия", text: "Безопасная сделка" },
+                { Icon: Headset, title: "Поддержка 24/7", text: "Поможем на всех этапах" },
+                { Icon: FileText, title: "Инструкция", text: "Подробно по установке" },
+              ].map((g, i) => (
+                <div key={i} className="premium-card rounded-2xl p-3.5 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl premium-gradient flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#0047ff]/30">
+                    <g.Icon className="w-5 h-5 text-white" strokeWidth={1.9} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-white font-bold text-sm leading-tight">{g.title}</p>
+                    <p className="text-white/60 text-xs leading-tight mt-0.5">{g.text}</p>
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* Tabs */}

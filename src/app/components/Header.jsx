@@ -17,6 +17,7 @@ const Header = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
   const { basket } = useBasket();
   const totalItems = basket.reduce((sum, item) => sum + (item.quantity ?? 1), 0);
@@ -93,8 +94,8 @@ const Header = () => {
       </noscript>
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
 
-        {/* ── MOBILE HEADER — centered logo ── */}
-        <div className="flex md:hidden items-center justify-center h-14">
+        {/* ── MOBILE HEADER — лого слева, поиск + корзина справа ── */}
+        <div className="flex md:hidden items-center justify-between h-14">
           <Link href="/" className="hover:opacity-90 transition-opacity duration-200">
             <Image
               className="h-9 w-auto"
@@ -105,6 +106,27 @@ const Header = () => {
               priority
             />
           </Link>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => setMobileSearchOpen((v) => !v)}
+              className="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
+              aria-label="Поиск"
+            >
+              {mobileSearchOpen ? <IoClose size={22} /> : <IoSearch size={22} />}
+            </button>
+            <Link
+              href="/basket"
+              className="relative p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
+              aria-label="Корзина"
+            >
+              <Image className="h-6 w-6" src="/logo/55.png" alt="Корзина" width={24} height={24} />
+              {mounted && totalItems > 0 && (
+                <span className="absolute top-0.5 right-0.5 bg-[#ff0000] text-white text-[10px] font-bold rounded-full flex items-center justify-center min-w-[17px] h-[17px] px-1 leading-none shadow">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+          </div>
         </div>
 
         {/* ── DESKTOP HEADER ── */}
@@ -248,18 +270,19 @@ const Header = () => {
         </div>
       </div>
 
-      {/* ── MOBILE: transparent search bar below logo ── */}
-      <div className="md:hidden px-4 pb-3">
+      {/* ── MOBILE: search bar (раскрывается по тапу на лупу) ── */}
+      <div className={`md:hidden px-4 pb-3 animate-fade-in ${mobileSearchOpen ? "" : "hidden"}`}>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <IoSearch className="text-white/40" size={16} />
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+            <IoSearch className="text-white/50" size={18} />
           </div>
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Поиск игр..."
-            className="w-full pl-9 pr-9 py-2.5 bg-transparent border border-white/20 rounded-xl text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#0047ff] transition-all duration-200"
+            autoFocus
+            className="w-full pl-10 pr-10 py-3 bg-white/5 border border-white/10 rounded-2xl text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#0047ff] focus:bg-white/10 focus:ring-2 focus:ring-[#0047ff]/20 transition-all duration-200"
           />
           {query && (
             <button
