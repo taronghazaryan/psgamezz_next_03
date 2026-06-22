@@ -27,7 +27,7 @@ const Hero = () => {
         width={620}
         height={620}
         aria-hidden
-        className="hidden lg:block absolute -left-10 xl:left-0 top-[31%] w-[460px] xl:w-[580px] -rotate-[45deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
+        className="hidden lg:block absolute -left-10 xl:left-0 top-[27%] w-[460px] xl:w-[580px] -rotate-[60deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
       />
       <Image
         src="/images/rcont.png"
@@ -35,7 +35,7 @@ const Hero = () => {
         width={620}
         height={620}
         aria-hidden
-        className="hidden lg:block absolute -right-10 xl:right-0 top-[31%] w-[460px] xl:w-[580px] rotate-[45deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
+        className="hidden lg:block absolute -right-10 xl:right-0 top-[27%] w-[460px] xl:w-[580px] rotate-[60deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
       />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-28 lg:py-32">
