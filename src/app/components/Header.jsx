@@ -94,7 +94,7 @@ const Header = () => {
       </noscript>
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
 
-        {/* ── MOBILE HEADER — лого слева, поиск + корзина справа ── */}
+        {/* ── MOBILE HEADER — лого слева, поиск справа ── */}
         <div className="flex md:hidden items-center justify-between h-14">
           <Link href="/" className="hover:opacity-90 transition-opacity duration-200">
             <Image
@@ -106,27 +106,13 @@ const Header = () => {
               priority
             />
           </Link>
-          <div className="flex items-center gap-1">
-            <button
-              onClick={() => setMobileSearchOpen((v) => !v)}
-              className="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
-              aria-label="Поиск"
-            >
-              {mobileSearchOpen ? <IoClose size={22} /> : <IoSearch size={22} />}
-            </button>
-            <Link
-              href="/basket"
-              className="relative p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
-              aria-label="Корзина"
-            >
-              <Image className="h-6 w-6" src="/logo/55.png" alt="Корзина" width={24} height={24} />
-              {mounted && totalItems > 0 && (
-                <span className="absolute top-0.5 right-0.5 bg-[#ff0000] text-white text-[10px] font-bold rounded-full flex items-center justify-center min-w-[17px] h-[17px] px-1 leading-none shadow">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-          </div>
+          <button
+            onClick={() => setMobileSearchOpen((v) => !v)}
+            className="p-2.5 -mr-1 rounded-xl hover:bg-white/10 transition-all duration-200 text-white"
+            aria-label="Поиск"
+          >
+            {mobileSearchOpen ? <IoClose size={22} /> : <IoSearch size={22} />}
+          </button>
         </div>
 
         {/* ── DESKTOP HEADER ── */}
