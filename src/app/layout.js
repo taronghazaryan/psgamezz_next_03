@@ -1,5 +1,5 @@
 // layout.js
-import { Montserrat } from "next/font/google";
+import { Montserrat, Unbounded } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { BasketProvider } from "./context/BasketContext";
@@ -10,8 +10,16 @@ import TelegramInit from "./components/TelegramInit";
 
 const montserrat = Montserrat({
   weight: ["400", "700", "900"],
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   variable: "--font-montserrat",
+  display: "swap",
+});
+
+// Дисплейный шрифт заголовков — как на gameswim
+const unbounded = Unbounded({
+  weight: ["600", "700", "900"],
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-unbounded",
   display: "swap",
 });
 
@@ -36,7 +44,7 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
         />
       </head>
-      <body className={`overflow-x-hidden ${montserrat.variable} font-montserrat antialiased min-h-screen flex flex-col bg-[#0d0e14]`}>
+      <body className={`overflow-x-hidden ${montserrat.variable} ${unbounded.variable} font-montserrat antialiased min-h-screen flex flex-col bg-[#030712]`}>
         <BasketProvider>
           <TelegramInit />
           <Header />

@@ -16,7 +16,7 @@ export default function FailModal({ onClose }) {
 
   return (
     <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="relative premium-card bg-[#0d0e14]/80 text-white w-full max-w-lg rounded-3xl border border-white/10 shadow-xl px-8 py-8 flex flex-col gap-6">
+      <div className="relative premium-card bg-[#030712]/80 text-white w-full max-w-lg rounded-3xl border border-white/10 shadow-xl px-8 py-8 flex flex-col gap-6">
         <button
           onClick={() => {
             onClose();
@@ -39,7 +39,7 @@ export default function FailModal({ onClose }) {
 
         <button
           onClick={() => { onClose(); router.replace('/'); }}
-          className="w-full bg-[#6366f1] hover:bg-[#5555e0] text-white py-3 rounded-xl font-bold transition-all duration-200 hover:scale-105 shadow-lg"
+          className="w-full bg-[#0047ff] hover:bg-[#0033b7] text-white py-3 rounded-xl font-bold transition-all duration-200 hover:scale-105 shadow-lg"
         >
           На главную
         </button>

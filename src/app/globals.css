@@ -8,7 +8,7 @@ body {
   margin: 0;
   color: #ffffff;
   overflow-x: hidden;
-  background: #0d0e14;
+  background: #030712;
   /* Support Telegram WebApp safe areas */
   padding-top: env(safe-area-inset-top, 0px);
   padding-left: env(safe-area-inset-left, 0px);
@@ -38,6 +38,21 @@ nav, header {
   -webkit-user-select: none;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #070c1b;
+}
+::-webkit-scrollbar-thumb {
+  background: #0047ff;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0033b7;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -47,15 +62,22 @@ nav, header {
   scrollbar-width: none;
 }
 
+::selection {
+  background: #0047ff;
+  color: #ffffff;
+}
+
 @theme {
-  --color-primary: #6366f1;
-  --color-secondary: #f59e0b;
-  --color-accent: #8b5cf6;
-  --color-success: #10b981;
-  --color-dark: #0d0e14;
-  --color-darker: #1a1b26;
-  --color-surface: #252732;
-  --color-card: #1e1f2e;
+  --color-primary: #0047ff;
+  --color-secondary: #fcc000;
+  --color-accent: #ff0000;
+  --color-success: #16a34a;
+  --color-dark: #030712;
+  --color-darker: #070c1b;
+  --color-surface: #0e2148;
+  --color-card: #0b1c4a;
+
+  --font-display: var(--font-unbounded), sans-serif;
 
   --breakpoint-xs: 480px;
   --breakpoint-sm: 640px;
@@ -63,6 +85,11 @@ nav, header {
 }
 
 @layer utilities {
+  /* Дисплейный шрифт заголовков (gameswim-стиль) */
+  .font-display {
+    font-family: var(--font-unbounded), sans-serif;
+  }
+
   .animate-fade-in {
     @apply opacity-0 scale-95;
     animation: fadeIn 0.4s ease-out forwards;
@@ -76,88 +103,94 @@ nav, header {
   }
 
   .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 2.4s ease-in-out infinite alternate;
   }
 
   @keyframes glow {
     from {
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.2);
+      box-shadow: 0 0 18px rgba(0, 71, 255, 0.35), 0 0 36px rgba(0, 71, 255, 0.15);
     }
     to {
-      box-shadow: 0 0 30px rgba(99, 102, 241, 0.6), 0 0 60px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 0 26px rgba(0, 71, 255, 0.55), 0 0 52px rgba(0, 71, 255, 0.28);
     }
   }
 
   .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
   }
 
   .hover-lift:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
   }
 
+  /* ===== Акцентные плашки ===== */
   .premium-gradient {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    background: linear-gradient(135deg, #0047ff 0%, #0033b7 100%);
   }
 
   .premium-gradient-accent {
-    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    background: linear-gradient(135deg, #0047ff 0%, #2499e3 100%);
   }
 
   .premium-gradient-warm {
-    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    background: linear-gradient(135deg, #fcc000 0%, #ff0000 100%);
   }
 
+  /* ===== Карточки: тёмно-синие с лёгкой синей обводкой ===== */
   .premium-card {
-    background: linear-gradient(145deg, #1e1f2e 0%, #252732 100%);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(145deg, #0b1c4a 0%, #070f2e 100%);
+    border: 1px solid rgba(0, 71, 255, 0.25);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
   }
 
   .premium-card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .premium-card-hover:hover {
-    border-color: rgba(99, 102, 241, 0.5);
-    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+    border-color: rgba(0, 71, 255, 0.65);
+    box-shadow: 0 10px 34px rgba(0, 71, 255, 0.28);
     transform: translateY(-4px);
   }
 
+  /* ===== Кнопки: сплошной электрик-синий ===== */
   .premium-button {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-    transition: all 0.3s ease;
-    color: white;
+    background: #0047ff;
+    box-shadow: 0 4px 16px rgba(0, 71, 255, 0.4);
+    transition: all 0.2s ease;
+    color: #ffffff;
   }
 
   .premium-button:hover {
-    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
+    background: #0033b7;
+    box-shadow: 0 6px 22px rgba(0, 71, 255, 0.55);
     transform: translateY(-2px);
   }
 
   .premium-button-warm {
-    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-    transition: all 0.3s ease;
-    color: white;
+    background: #fcc000;
+    box-shadow: 0 4px 16px rgba(252, 192, 0, 0.35);
+    transition: all 0.2s ease;
+    color: #1a1302;
   }
 
   .premium-button-warm:hover {
-    box-shadow: 0 6px 25px rgba(245, 158, 11, 0.6);
+    background: #d9a800;
+    box-shadow: 0 6px 22px rgba(252, 192, 0, 0.5);
     transform: translateY(-2px);
   }
 
+  /* ===== Акцентный текст ===== */
   .text-gradient {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #0047ff 0%, #2499e3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-warm {
-    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    background: linear-gradient(135deg, #fcc000 0%, #ff0000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

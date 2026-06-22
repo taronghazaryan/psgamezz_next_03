@@ -46,13 +46,13 @@ export default function SubscriptionPageClient() {
   }, []);
 
   return (
-    <div className="bg-[#0d0e14] min-h-screen">
+    <div className="bg-[#030712] min-h-screen">
       <Hero />
-      <div className="overflow-hidden bg-[#0d0e14]">
+      <div className="overflow-hidden bg-[#030712]">
         <div className="px-4 md:px-6 lg:px-8 py-12 md:py-16" id="subscriptions">
           <PsPlus subscriptions={psPlusSubs} consoleTypes={consoleTypes} />
         </div>
-        <div className="px-4 md:px-6 lg:px-8  bg-[#0d0e14]">
+        <div className="px-4 md:px-6 lg:px-8  bg-[#030712]">
           <Guidance subscriptions={eaPlaySubs} consoleTypes={consoleTypes} />
         </div>
       </div>

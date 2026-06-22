@@ -92,18 +92,18 @@ export default function Products() {
         <div className="relative">
           <div className="flex items-center justify-between mb-8 md:mb-12 px-4 md:px-0">
             <button 
-              className={`${prevClass} hidden md:flex w-14 h-14 rounded-xl bg-[#1e1f2e] border border-white/10 text-white hover:text-[#6366f1] flex items-center justify-center transition-all duration-200 hover:scale-110`} 
+              className={`${prevClass} hidden md:flex w-14 h-14 rounded-xl bg-[#0b1c4a] border border-white/10 text-white hover:text-[#0047ff] flex items-center justify-center transition-all duration-200 hover:scale-110`} 
               aria-label={`Previous Slide ${title}`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <h2 className="max-sm:text-2xl text-4xl md:text-5xl lg:text-6xl font-black text-white text-center flex-1">
+            <h2 className="max-sm:text-2xl text-4xl md:text-5xl lg:text-6xl font-black font-display text-white text-center flex-1">
               {title}
             </h2>
             <button 
-              className={`${nextClass} hidden md:flex w-14 h-14 rounded-xl bg-[#1e1f2e] border border-white/10 text-white hover:text-[#6366f1] flex items-center justify-center transition-all duration-200 hover:scale-110`} 
+              className={`${nextClass} hidden md:flex w-14 h-14 rounded-xl bg-[#0b1c4a] border border-white/10 text-white hover:text-[#0047ff] flex items-center justify-center transition-all duration-200 hover:scale-110`} 
               aria-label={`Next Slide ${title}`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

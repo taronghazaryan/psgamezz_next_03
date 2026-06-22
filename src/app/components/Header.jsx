@@ -65,7 +65,7 @@ const Header = () => {
 
   return (
     <header
-      className="relative z-50 w-full bg-[#1a1b26] border-b border-white/10 shadow-lg"
+      className="relative z-50 w-full bg-[#070c1b] border-b border-white/10 shadow-lg"
       style={{ paddingTop: "var(--tg-safe-area-inset-top, env(safe-area-inset-top, 0px))" }}
     >
             {/* Яндекс.Метрика */}
@@ -138,7 +138,7 @@ const Header = () => {
               href="/games"
               className={`relative px-6 py-3 rounded-xl font-semibold text-sm xl:text-base transition-all duration-300 ${
                 pathname === "/games"
-                  ? "bg-[#6366f1] text-white"
+                  ? "bg-[#0047ff] text-white"
                   : "text-white/80 hover:text-white hover:bg-white/10"
               }`}
             >
@@ -158,7 +158,7 @@ const Header = () => {
               href="/subscription"
               className={`relative px-6 py-3 rounded-xl font-semibold text-sm xl:text-base transition-all duration-300 ${
                 pathname === "/subscription"
-                  ? "bg-[#f59e0b] text-white"
+                  ? "bg-[#fcc000] text-white"
                   : "text-white/80 hover:text-white hover:bg-white/10"
               }`}
             >
@@ -185,10 +185,10 @@ const Header = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Поиск игр..."
-                className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] focus:bg-white/15 focus:ring-2 focus:ring-[#6366f1]/20 transition-all duration-200"
+                className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-[#0047ff] focus:bg-white/15 focus:ring-2 focus:ring-[#0047ff]/20 transition-all duration-200"
               />
               {query && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-[#252732] rounded-xl shadow-xl border border-white/10 max-h-[400px] overflow-y-auto z-50">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-[#0e2148] rounded-xl shadow-xl border border-white/10 max-h-[400px] overflow-y-auto z-50">
                   {loading ? (
                     <div className="p-4 text-center text-white/60">Загрузка...</div>
                   ) : results.length > 0 ? (
@@ -208,7 +208,7 @@ const Header = () => {
                             className="w-15 h-20 object-cover rounded-lg flex-shrink-0 group-hover:scale-105 transition-transform duration-200"
                           />
                           <div className="flex-1 min-w-0">
-                            <p className="font-semibold text-white group-hover:text-[#6366f1] transition-colors truncate">{game.title}</p>
+                            <p className="font-semibold text-white group-hover:text-[#0047ff] transition-colors truncate">{game.title}</p>
                             <p className="text-sm text-white/60">
                               от {game.prices?.without_activation?.[0]?.PS4 || game.prices?.without_activation?.[0]?.PS5 || "—"} ₽
                             </p>
@@ -259,7 +259,7 @@ const Header = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Поиск игр..."
-            className="w-full pl-9 pr-9 py-2.5 bg-transparent border border-white/20 rounded-xl text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#6366f1] transition-all duration-200"
+            className="w-full pl-9 pr-9 py-2.5 bg-transparent border border-white/20 rounded-xl text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#0047ff] transition-all duration-200"
           />
           {query && (
             <button
@@ -273,7 +273,7 @@ const Header = () => {
 
         {/* Mobile search results */}
         {query && (
-          <div className="mt-2 bg-[#252732] rounded-xl shadow-xl border border-white/10 max-h-[60vh] overflow-y-auto animate-fade-in">
+          <div className="mt-2 bg-[#0e2148] rounded-xl shadow-xl border border-white/10 max-h-[60vh] overflow-y-auto animate-fade-in">
             {loading ? (
               <div className="p-3 text-center text-white/60 text-sm">Загрузка...</div>
             ) : results.length > 0 ? (
@@ -312,13 +312,13 @@ const Header = () => {
       {menuOpen && (
         <div
           ref={menuRef}
-          className="md:flex lg:hidden border-t border-white/10 bg-[#1a1b26] animate-fade-in"
+          className="md:flex lg:hidden border-t border-white/10 bg-[#070c1b] animate-fade-in"
         >
           <nav className="flex flex-col py-4 w-full">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200">Главная</Link>
-            <Link href="/games" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200">Игры</Link>
-            <Link href="/subscription" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#f59e0b] transition-all duration-200">Подписки</Link>
-            <Link href="/basket" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#6366f1] transition-all duration-200">Корзина</Link>
+            <Link href="/" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#0047ff] transition-all duration-200">Главная</Link>
+            <Link href="/games" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#0047ff] transition-all duration-200">Игры</Link>
+            <Link href="/subscription" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#fcc000] transition-all duration-200">Подписки</Link>
+            <Link href="/basket" onClick={() => setMenuOpen(false)} className="px-6 py-4 text-white font-semibold hover:bg-white/10 hover:text-[#0047ff] transition-all duration-200">Корзина</Link>
           </nav>
         </div>
       )}

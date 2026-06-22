@@ -5,10 +5,10 @@ import Image from "next/image";
 
 const Section2 = () => {
   return (
-    <section className="relative w-full py-16 md:py-20 lg:py-24 bg-[#0d0e14]">
+    <section className="relative w-full py-16 md:py-20 lg:py-24 bg-[#030712]">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-display text-white mb-4">
             Мы создаем рай для геймеров
           </h2>
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto">
@@ -50,7 +50,7 @@ const Section2 = () => {
           </Link>
 
           <Link href="/subscription#eaplay" className="group">
-            <div className="premium-card rounded-3xl p-8 md:p-10 premium-card-hover h-full flex flex-col items-center text-center border-2 border-[#ef4444]/30">
+            <div className="premium-card rounded-3xl p-8 md:p-10 premium-card-hover h-full flex flex-col items-center text-center border-2 border-[#ff0000]/30">
                 <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl  flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <Image
                       src="/img/ea-play.png"
@@ -70,7 +70,7 @@ const Section2 = () => {
           </Link>
 
           <Link href="/subscription#psplus" className="group">
-            <div className="premium-card rounded-3xl p-8 md:p-10 premium-card-hover h-full flex flex-col items-center text-center border-2 border-[#f59e0b]/30">
+            <div className="premium-card rounded-3xl p-8 md:p-10 premium-card-hover h-full flex flex-col items-center text-center border-2 border-[#fcc000]/30">
                <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl  flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <Image
                       src="/img/btns.png"

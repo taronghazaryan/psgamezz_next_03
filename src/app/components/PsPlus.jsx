@@ -138,7 +138,7 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 
 				<div className="flex flex-col lg:flex-row gap-8" >
 					{/* Left card */}
-					<div className="bg-[#1e1f2e] rounded-3xl p-8 text-white w-full md:w-[420px] xl:w-[400px] xl:h-auto border border-white/10 shadow-xl">
+					<div className="bg-[#0b1c4a] rounded-3xl p-8 text-white w-full md:w-[420px] xl:w-[400px] xl:h-auto border border-white/10 shadow-xl">
 						<div className="flex flex-col items-center justify-center gap-1 h-full">
 							<Image
 								src="/img/btns.png"
@@ -154,7 +154,7 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 					</div>
 
 					{/* Right card */}
-					<div className="grid grid-cols-2 max-md:grid-cols-1 max-sm:grid-cols-1 gap-x-8 gap-y-2.5 bg-[#1e1f2e] rounded-3xl border border-white/10 p-8 max-md:p-6 max-sm:p-4 flex-1 shadow-xl">
+					<div className="grid grid-cols-2 max-md:grid-cols-1 max-sm:grid-cols-1 gap-x-8 gap-y-2.5 bg-[#0b1c4a] rounded-3xl border border-white/10 p-8 max-md:p-6 max-sm:p-4 flex-1 shadow-xl">
 						<div className="flex flex-col justify-between">
 							<div>
 								<h2 className="xl:text-4xl md:text-3xl text-left font-[900] text-white mb-1 max-sm:text-[16px]">
@@ -184,7 +184,7 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 											onClick={() => setPsType(name)}
 											className={`px-4 py-1 border border-white/20 rounded-lg font-[900] max-md:text-sm max-sm:text-[12px] cursor-pointer transition-all duration-200 ${
 												psType === name
-													? "bg-[#6366f1] text-white border-[#6366f1]"
+													? "bg-[#0047ff] text-white border-[#0047ff]"
 													: "bg-white/10 text-white hover:bg-white/20"
 											}`}
 										>
@@ -212,7 +212,7 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 											}}
 											className={`py-3 px-4 rounded-[10px] font-[900] transition-colors whitespace-nowrap cursor-pointer ${
 												selectedTier === tier
-													? "bg-[#6366f1] text-white"
+													? "bg-[#0047ff] text-white"
 													: "bg-white/10 text-white hover:bg-white/20"
 											}`}
 										>
@@ -237,7 +237,7 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 											onClick={() => setSelectedDuration(durationValue)}
 											className={`w-full p-2 text-sm max-sm:text-xs rounded-lg border transition-colors flex justify-between items-center ${
 												selectedDuration === durationValue
-													? "bg-[#6366f1] text-white border-[#6366f1]"
+													? "bg-[#0047ff] text-white border-[#0047ff]"
 													: "bg-white/10 text-white border-white/20 hover:bg-white/20"
 											}`}
 										>
@@ -245,7 +245,7 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 												<span
 													className={`w-6 h-6 rounded-sm border flex items-center justify-center ${
 														selectedDuration === durationValue
-															? "border-white bg-[#6366f1]"
+															? "border-white bg-[#0047ff]"
 															: "border-white/40 bg-white/10"
 													}`}
 												>
@@ -291,7 +291,7 @@ export default function PsPlus({ subscriptions, consoleTypes }) {
 											className={`w-full ${
 												inBasket
 													? "bg-white/20 cursor-not-allowed text-white/50"
-													: "bg-[#6366f1] hover:bg-[#5555e0] text-white"
+													: "bg-[#0047ff] hover:bg-[#0033b7] text-white"
 											} font-[600] py-2 rounded-lg text-lg max-sm:text-sm transition-colors cursor-pointer`}
 										>
 											{inBasket ? "В корзине" : "В корзину"}

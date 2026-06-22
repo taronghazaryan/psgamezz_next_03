@@ -23,7 +23,7 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#1a1b26]/95 backdrop-blur-md border-t border-white/10">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#070c1b]/95 backdrop-blur-md border-t border-white/10">
       <div
         className="grid grid-cols-4"
         style={{ paddingBottom: "env(safe-area-inset-bottom, 8px)" }}
@@ -36,7 +36,7 @@ export default function BottomNav() {
               key={href}
               href={href}
               className={`relative flex flex-col items-center justify-center py-3 gap-1 transition-all duration-200 active:scale-95 ${
-                isActive ? "text-[#6366f1]" : "text-white/45"
+                isActive ? "text-[#0047ff]" : "text-white/45"
               }`}
             >
               <div className="relative">
@@ -53,13 +53,13 @@ export default function BottomNav() {
               </div>
               <span
                 className={`text-[10px] font-semibold leading-none transition-colors duration-200 ${
-                  isActive ? "text-[#6366f1]" : "text-white/40"
+                  isActive ? "text-[#0047ff]" : "text-white/40"
                 }`}
               >
                 {label}
               </span>
               {isActive && (
-                <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-[#6366f1] rounded-full" />
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-[#0047ff] rounded-full" />
               )}
             </Link>
           );

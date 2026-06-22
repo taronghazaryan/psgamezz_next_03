@@ -13,7 +13,7 @@ export default function SideBAR({ filters, onCheckboxChange, onPriceChange, onRe
                   type="checkbox"
                   checked={filters.platform[platform]}
                   onChange={() => onCheckboxChange('platform', platform)}
-                  className="w-5 h-5 text-white bg-[#1a1b26]  border-2 border-primary rounded-full accent-white cursor-pointer"
+                  className="w-5 h-5 text-white bg-[#070c1b]  border-2 border-primary rounded-full accent-white cursor-pointer"
                 />
                 <span className="text-white font-bold">{platform.toUpperCase()}</span>
               </label>

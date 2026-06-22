@@ -136,7 +136,7 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
 
         {/* Main block */}
         <div className="flex flex-col lg:flex-row gap-8 mt-[100px] mb-12.5 max-sm:py-10 max-sm:mb-7.5 max-sm:mt-0 " id="eaplay">
-          <div className="flex bg-[#1e1f2e] items-center justify-center gap-1 h-full rounded-3xl p-8 border border-white/10 shadow-xl flex-shrink-0">
+          <div className="flex bg-[#0b1c4a] items-center justify-center gap-1 h-full rounded-3xl p-8 border border-white/10 shadow-xl flex-shrink-0">
             <Image
               src="/img/ea-play.png"
               alt="EA Play"
@@ -147,7 +147,7 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
           </div>
 
           {/* Card */}
-          <div className="grid grid-cols-2 max-md:grid-cols-1 max-sm:grid-cols-1 gap-x-8 gap-y-2.5 bg-[#1e1f2e] rounded-3xl border border-white/10 p-8 max-md:p-6 max-sm:p-4 flex-1 shadow-xl">
+          <div className="grid grid-cols-2 max-md:grid-cols-1 max-sm:grid-cols-1 gap-x-8 gap-y-2.5 bg-[#0b1c4a] rounded-3xl border border-white/10 p-8 max-md:p-6 max-sm:p-4 flex-1 shadow-xl">
             <div className="flex flex-col justify-between">
               <div>
                 <h2 className="xl:text-4xl md:text-3xl font-[900] text-left text-white mb-1 max-sm:text-base">
@@ -177,7 +177,7 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
                       onClick={() => setPsType(c.name)}
                       className={`px-4 py-1 border border-white/20 rounded-lg font-[900] max-md:text-sm max-sm:text-[12px] cursor-pointer transition-all duration-200 ${
                         psType === c.name
-                          ? "bg-[#6366f1] text-white border-[#6366f1]"
+                          ? "bg-[#0047ff] text-white border-[#0047ff]"
                           : "bg-white/10 text-white hover:bg-white/20"
                       }`}
                     >
@@ -200,14 +200,14 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
                     onClick={() => setSelectedDuration(duration.value)}
                     className={`w-full p-2 text-sm max-sm:text-xs rounded-lg border transition-colors flex justify-between items-center ${
                       selectedDuration === duration.value
-                        ? "bg-[#6366f1] text-white border-[#6366f1]"
+                        ? "bg-[#0047ff] text-white border-[#0047ff]"
                         : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                     }`}
                   >
                     <div className="flex items-center gap-2">
                       <span className={`w-6 h-6 rounded-sm border flex items-center justify-center ${
                         selectedDuration === duration.value
-                          ? "border-white bg-[#6366f1]"
+                          ? "border-white bg-[#0047ff]"
                           : "border-white/40 bg-white/10"
                       }`}>
                         <span className={`text-sm font-bold max-sm:text-xs ${
@@ -238,7 +238,7 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
                       className={`w-full ${
                         inBasket
                           ? "bg-white/20 cursor-not-allowed text-white/50"
-                          : "bg-[#ef4444] hover:bg-[#dc2626] text-white"
+                          : "bg-[#ff0000] hover:bg-[#bf0000] text-white"
                       } font-[600] py-2 rounded-lg text-lg max-sm:text-sm transition-colors cursor-pointer`}
                     >
                       {inBasket ? "В корзине" : "В корзину"}
@@ -291,10 +291,10 @@ export default function PlayStationPlusDesign({ subscriptions, consoleTypes }) {
 										onClick={() => {
 											setOpenIndex(isOpen ? null : index);
 										}}
-										className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#6366f1]/20 hover:bg-[#6366f1]/30 flex items-center justify-center transition-all duration-200"
+										className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#0047ff]/20 hover:bg-[#0047ff]/30 flex items-center justify-center transition-all duration-200"
 									>
 										{isOpen ? (
-											<ChevronUp className='w-6 h-6 text-[#6366f1]' />
+											<ChevronUp className='w-6 h-6 text-[#0047ff]' />
 										) : (
 											<ChevronDown className='w-6 h-6 text-white' />
 										)}

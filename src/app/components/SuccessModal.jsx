@@ -17,7 +17,7 @@ export default function SuccessModal({ invoiceId, onClose }) {
 
   return (
     <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="relative premium-card bg-[#0d0e14]/80 text-white w-full max-w-lg rounded-3xl border border-white/10 shadow-xl px-8 py-8 flex flex-col gap-6">
+      <div className="relative premium-card bg-[#030712]/80 text-white w-full max-w-lg rounded-3xl border border-white/10 shadow-xl px-8 py-8 flex flex-col gap-6">
         <button
           onClick={() => {
             onClose();

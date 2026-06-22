@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       {/* ── Mobile footer ── */}
-      <footer className="md:hidden w-full bg-[#1a1b26] border-t border-white/10 pb-[calc(64px+env(safe-area-inset-bottom,0px))]">
+      <footer className="md:hidden w-full bg-[#070c1b] border-t border-white/10 pb-[calc(64px+env(safe-area-inset-bottom,0px))]">
         <div className="px-5 pt-6 pb-2 flex flex-col items-center gap-5 text-center">
 
           {/* Working hours */}
@@ -42,7 +42,7 @@ const Footer = () => {
       </footer>
 
       {/* ── Desktop footer ── */}
-      <footer className="relative mt-auto w-full bg-[#1a1b26] border-t border-white/10 shadow-lg hidden md:block">
+      <footer className="relative mt-auto w-full bg-[#070c1b] border-t border-white/10 shadow-lg hidden md:block">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           
@@ -185,7 +185,7 @@ const Footer = () => {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 hover:text-[#f59e0b] transition-colors duration-200 text-sm block"
+                    className="text-white/70 hover:text-[#fcc000] transition-colors duration-200 text-sm block"
                   >
                     Если ты специалист
                   </a>
@@ -195,7 +195,7 @@ const Footer = () => {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 hover:text-[#f59e0b] transition-colors duration-200 text-sm block"
+                    className="text-white/70 hover:text-[#fcc000] transition-colors duration-200 text-sm block"
                   >
                     Если ты блогер
                   </a>
@@ -205,7 +205,7 @@ const Footer = () => {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 hover:text-[#f59e0b] transition-colors duration-200 text-sm block"
+                    className="text-white/70 hover:text-[#fcc000] transition-colors duration-200 text-sm block"
                   >
                     Партнёрство
                   </a>

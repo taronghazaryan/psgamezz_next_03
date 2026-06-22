@@ -13,9 +13,9 @@ export default function TelegramInit() {
     tg.expand();
 
     // Match app dark theme with Telegram's header / background
-    if (typeof tg.setHeaderColor === "function") tg.setHeaderColor("#0d0e14");
-    if (typeof tg.setBackgroundColor === "function") tg.setBackgroundColor("#0d0e14");
-    if (typeof tg.setBottomBarColor === "function") tg.setBottomBarColor("#0d0e14");
+    if (typeof tg.setHeaderColor === "function") tg.setHeaderColor("#030712");
+    if (typeof tg.setBackgroundColor === "function") tg.setBackgroundColor("#030712");
+    if (typeof tg.setBottomBarColor === "function") tg.setBottomBarColor("#030712");
 
     // Explicitly push safe-area values to CSS vars (more reliable than the auto-set ones in older clients)
     const applyInsets = () => {

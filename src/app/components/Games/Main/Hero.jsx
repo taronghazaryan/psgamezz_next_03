@@ -36,7 +36,7 @@ export default function Hero() {
   const { img, title, description, price } = games[activeHero];
 
   return (
-    <div className="w-full max-w-[1400px]  mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 bg-[#0d0e14]">
+    <div className="w-full max-w-[1400px]  mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 bg-[#030712]">
       {/* Desktop */}
       <div className="hidden sm:grid grid-cols-4 gap-5">
         <div
@@ -44,9 +44,9 @@ export default function Hero() {
           className="relative flex flex-col justify-end items-start px-8 py-14 col-span-3 bg-center bg-cover rounded-3xl h-[500px] premium-card-hover"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-3xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1]/20 via-transparent to-[#ec4899]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0047ff]/20 via-transparent to-[#0047ff]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
           <div className="z-10">
-            <h2 className="text-white font-black text-4xl md:text-5xl lg:text-6xl mb-4 drop-shadow-2xl">{title}</h2>
+            <h2 className="text-white font-black font-display text-4xl md:text-5xl lg:text-6xl mb-4 drop-shadow-2xl">{title}</h2>
             <p className="text-white/90 font-medium w-full max-w-xl mb-6 line-clamp-3 text-lg">
               {description}
             </p>
@@ -71,7 +71,7 @@ export default function Hero() {
               <div
                 className={`absolute inset-0 rounded-3xl transition-all duration-300 ${
                   activeHero === index
-                    ? "bg-gradient-to-r from-black/80 via-black/50 to-transparent border-2 border-[#6366f1]/50"
+                    ? "bg-gradient-to-r from-black/80 via-black/50 to-transparent border-2 border-[#0047ff]/50"
                     : "bg-black/60"
                 }`}
               ></div>

@@ -40,10 +40,10 @@ export default function Questions() {
 		},
 	];
 	return (
-		<div className="w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16 bg-[#0d0e14]">
+		<div className="w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16 bg-[#030712]">
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20">
 				<div className='flex flex-col justify-self-start gap-2.5 py-4'>
-					<h1 className='text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 md:mb-8'>
+					<h1 className='text-3xl md:text-4xl lg:text-5xl font-black font-display text-white mb-6 md:mb-8'>
 						Возникли вопросы?
 					</h1>
 					{questions.map((item, index) => {
@@ -58,10 +58,10 @@ export default function Questions() {
 										onClick={() => {
 											setOpenIndex(isOpen ? null : index);
 										}}
-										className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#6366f1]/20 hover:bg-[#6366f1]/30 flex items-center justify-center transition-all duration-200"
+										className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#0047ff]/20 hover:bg-[#0047ff]/30 flex items-center justify-center transition-all duration-200"
 									>
 										{isOpen ? (
-											<ChevronUp className='w-6 h-6 text-[#6366f1]' />
+											<ChevronUp className='w-6 h-6 text-[#0047ff]' />
 										) : (
 											<ChevronDown className='w-6 h-6 text-white' />
 										)}
@@ -83,7 +83,7 @@ export default function Questions() {
 					})}
 				</div>
 				<div className='flex flex-col items-center justify-center premium-card rounded-3xl gap-6 px-8 md:px-14 py-8 md:py-12 text-center border border-white/10'>
-					<h3 className='text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight'>
+					<h3 className='text-2xl md:text-3xl lg:text-4xl font-black font-display text-white leading-tight'>
 						Более 10 000 геймеров воспользовались для покупки игры нашими сервисами
 					</h3>
 					<button 

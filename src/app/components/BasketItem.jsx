@@ -18,7 +18,7 @@ const BasketItem = ({ item, index }) => {
           type="checkbox"
           checked={item.checked || false}
           onChange={() => toggleItemCheck(index)}
-          className="h-5 w-5 md:h-6 md:w-6 accent-[#6366f1] mt-2 cursor-pointer"
+          className="h-5 w-5 md:h-6 md:w-6 accent-[#0047ff] mt-2 cursor-pointer"
         />
 
         <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 flex-shrink-0 rounded-xl overflow-hidden">
@@ -34,7 +34,7 @@ const BasketItem = ({ item, index }) => {
 
         <div className="flex-1 flex flex-col md:flex-row md:items-center md:justify-between gap-4 min-w-0">
           <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-white text-base md:text-lg lg:text-xl mb-2 hover:text-[#6366f1] transition-colors line-clamp-2">
+            <h3 className="font-bold text-white text-base md:text-lg lg:text-xl mb-2 hover:text-[#0047ff] transition-colors line-clamp-2">
               {item.title}
             </h3>
 
@@ -42,7 +42,7 @@ const BasketItem = ({ item, index }) => {
               <div className="flex items-center gap-2 bg-white/10 rounded-xl p-1">
                 <button
                   onClick={() => changeQuantity(index, quantity - 1)}
-                  className="w-8 h-8 md:w-10 md:h-10 bg-white/20 hover:bg-[#6366f1]/30 text-white font-bold rounded-lg transition-all duration-200 hover:scale-110 flex items-center justify-center"
+                  className="w-8 h-8 md:w-10 md:h-10 bg-white/20 hover:bg-[#0047ff]/30 text-white font-bold rounded-lg transition-all duration-200 hover:scale-110 flex items-center justify-center"
                 >
                   −
                 </button>
@@ -51,7 +51,7 @@ const BasketItem = ({ item, index }) => {
                 </span>
                 <button
                   onClick={() => changeQuantity(index, quantity + 1)}
-                  className="w-8 h-8 md:w-10 md:h-10 bg-white/20 hover:bg-[#6366f1]/30 text-white font-bold rounded-lg transition-all duration-200 hover:scale-110 flex items-center justify-center"
+                  className="w-8 h-8 md:w-10 md:h-10 bg-white/20 hover:bg-[#0047ff]/30 text-white font-bold rounded-lg transition-all duration-200 hover:scale-110 flex items-center justify-center"
                 >
                   +
                 </button>

@@ -245,7 +245,7 @@ export default function SalesPage() {
             {/* Кнопка фильтров для мобильных */}
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="md:hidden flex items-center border border-gray-300 gap-2 px-4 py-2 bg-[#1a1b26] text-white rounded-lg"
+              className="md:hidden flex items-center border border-gray-300 gap-2 px-4 py-2 bg-[#070c1b] text-white rounded-lg"
             >
               <SlidersHorizontal size={18} />
               Фильтры
@@ -255,14 +255,14 @@ export default function SalesPage() {
             <div className="relative inline-block">
               <button
                 onClick={() => setIsSelectOpen(!isSelectOpen)}
-                className="flex items-center border border-gray-300 px-4 py-2 rounded-lg bg-[#1a1b26] shadow-sm hover:shadow transition-shadow"
+                className="flex items-center border border-gray-300 px-4 py-2 rounded-lg bg-[#070c1b] shadow-sm hover:shadow transition-shadow"
               >
                 <span className="mr-2">{selectedType}</span>
                 {isSelectOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
               </button>
 
               {isSelectOpen && (
-                <div className="absolute z-10 mt-2 w-full bg-[#1a1b26] border border-gray-300 rounded shadow-md">
+                <div className="absolute z-10 mt-2 w-full bg-[#070c1b] border border-gray-300 rounded shadow-md">
                   {["Популярные", "По рейтингу", "Дешевле", "Дороже"].map(
                     (type) => (
                       <div

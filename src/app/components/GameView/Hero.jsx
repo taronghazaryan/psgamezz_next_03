@@ -104,7 +104,7 @@ export default function Hero({ productItem }) {
 
   return (
     <>
-      <div className="relative w-full min-h-screen bg-[#0d0e14]">
+      <div className="relative w-full min-h-screen bg-[#030712]">
         {/* Background image */}
         <div
           className="fixed top-0 left-0 w-full h-full bg-cover bg-center opacity-15 pointer-events-none"
@@ -112,7 +112,7 @@ export default function Hero({ productItem }) {
             backgroundImage: `url(${productItem.images?.[0] || "/images/default.jpg"})`,
           }}
         />
-        <div className="fixed top-0 left-0 w-full h-full z-[-1] pointer-events-none bg-[#0d0e14]"></div>
+        <div className="fixed top-0 left-0 w-full h-full z-[-1] pointer-events-none bg-[#030712]"></div>
 
         <div className="relative flex flex-col lg:flex-row justify-center items-start px-4 md:px-6 py-8 md:py-12 max-w-7xl mx-auto gap-8 lg:gap-10 text-white">
           
@@ -142,7 +142,7 @@ export default function Hero({ productItem }) {
                       height={80}
                       className={`rounded-lg object-cover border transition-all duration-300 ${
                         currentMainImage === img
-                          ? "border-[#6366f1] opacity-100"
+                          ? "border-[#0047ff] opacity-100"
                           : "border-white/10 opacity-60 hover:opacity-90 hover:border-white/30"
                       }`}
                     />
@@ -155,7 +155,7 @@ export default function Hero({ productItem }) {
           {/* Right side - Content - Fixed layout */}
           <div className="flex-1 flex flex-col gap-6 min-w-0">
             {/* Main card - Fixed height */}
-            <div className="flex flex-col md:flex-row bg-[#1e1f2e] rounded-3xl px-5 md:px-8 py-6 shadow-xl border border-white/10">
+            <div className="flex flex-col md:flex-row bg-[#0b1c4a] rounded-3xl px-5 md:px-8 py-6 shadow-xl border border-white/10">
               {/* Left part - Fixed width */}
               <div className="flex-1 min-w-0 mb-4 md:mb-0 md:mr-6">
                 <h1 className="text-2xl md:text-3xl font-black mb-4 text-white line-clamp-2">{productItem.title}</h1>
@@ -170,8 +170,8 @@ export default function Hero({ productItem }) {
                         onClick={() => setPsType(btn)}
                         className={`px-3 py-2 rounded-lg font-bold text-sm transition-all duration-200 ${
                           psType === btn 
-                            ? "bg-[#6366f1] text-white shadow-lg" 
-                            : "bg-white/10 border border-white/20 text-white hover:bg-[#6366f1]/20"
+                            ? "bg-[#0047ff] text-white shadow-lg" 
+                            : "bg-white/10 border border-white/20 text-white hover:bg-[#0047ff]/20"
                         }`}
                       >
                         {btn}
@@ -190,8 +190,8 @@ export default function Hero({ productItem }) {
                         onClick={() => setActivation(btn)}
                         className={`px-3 py-2 rounded-lg font-bold text-sm transition-all duration-200 ${
                           activation === btn 
-                            ? "bg-[#6366f1] text-white shadow-lg" 
-                            : "bg-white/10 border border-white/20 text-white hover:bg-[#6366f1]/20"
+                            ? "bg-[#0047ff] text-white shadow-lg" 
+                            : "bg-white/10 border border-white/20 text-white hover:bg-[#0047ff]/20"
                         }`}
                       >
                         {btn}
@@ -207,7 +207,7 @@ export default function Hero({ productItem }) {
                   <div className="flex items-center gap-3 mb-6 w-full md:w-auto justify-start md:justify-end">
                     {saleAmount > 0 ? (
                       <>
-                        <span className="text-2xl md:text-3xl font-black text-[#6366f1]">{finalPrice}₽</span>
+                        <span className="text-2xl md:text-3xl font-black text-[#0047ff]">{finalPrice}₽</span>
                         <span className="line-through text-white/40 text-lg">{selectedPrice}₽</span>
                         <div className="bg-red-600 text-white font-bold px-1.5 py-1 rounded-lg text-xs ">
                           <p>-{saleAmount}%</p>
@@ -223,7 +223,7 @@ export default function Hero({ productItem }) {
                   className={`w-full md:w-[200px] lg:w-[240px] h-[44px] rounded-lg text-sm md:text-[15px] font-black transition-all duration-200 ${
                     alreadyInBasket 
                       ? "bg-white/20 cursor-not-allowed text-white/50" 
-                      : "bg-[#6366f1] hover:bg-[#5555e0] text-white hover:scale-105 shadow-lg"
+                      : "bg-[#0047ff] hover:bg-[#0033b7] text-white hover:scale-105 shadow-lg"
                   }`}
                   onClick={() => {
                     if (!alreadyInBasket && priceData?.price_id) {
@@ -259,27 +259,27 @@ export default function Hero({ productItem }) {
                 ].map((tab) => (
                   <button
                     key={tab.key}
-                    className={`bg-[#1e1f2e] py-2 px-3 md:py-[7px] md:px-[12px] rounded-xl flex items-center gap-2 transition-all duration-200 hover:scale-105 border ${
+                    className={`bg-[#0b1c4a] py-2 px-3 md:py-[7px] md:px-[12px] rounded-xl flex items-center gap-2 transition-all duration-200 hover:scale-105 border ${
                       openTab === tab.key 
-                        ? "border-[#6366f1]/50 shadow-lg bg-[#6366f1]/20" 
+                        ? "border-[#0047ff]/50 shadow-lg bg-[#0047ff]/20" 
                         : "border-white/10 bg-white/5"
                     }`}
                     onClick={() => setOpenTab(openTab === tab.key ? null : tab.key)}
                   >
                     <span className="text-white font-semibold text-sm">{tab.label}</span>
-                    {openTab === tab.key ? <ChevronUp className="w-4 h-4 text-[#6366f1]" /> : <ChevronDown className="w-4 h-4 text-white/60" />}
+                    {openTab === tab.key ? <ChevronUp className="w-4 h-4 text-[#0047ff]" /> : <ChevronDown className="w-4 h-4 text-white/60" />}
                   </button>
                 ))}
               </div>
 
               <div className="mt-3 flex flex-col gap-3">
                 <div className={`transition-all duration-700 overflow-hidden ${openTab === "about" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
-                  <div className="bg-[#1e1f2e] rounded-xl p-4 border border-white/10">
+                  <div className="bg-[#0b1c4a] rounded-xl p-4 border border-white/10">
                     <p className="text-white/90">{productItem.about}</p>
                   </div>
                 </div>
               <div className={`transition-all duration-700 overflow-hidden ${openTab === "details" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
-                <div className="bg-[#1e1f2e] rounded-xl p-4 border border-white/10">
+                <div className="bg-[#0b1c4a] rounded-xl p-4 border border-white/10">
 
                   {/* Субтитры */}
                   {productItem.subtitle && (
@@ -304,17 +304,17 @@ export default function Hero({ productItem }) {
 
 
                 <div className={`transition-all duration-700 overflow-hidden ${openTab === "faq" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
-                  <div className="bg-[#1e1f2e] rounded-xl p-4 flex flex-col gap-2 border border-white/10">
+                  <div className="bg-[#0b1c4a] rounded-xl p-4 flex flex-col gap-2 border border-white/10">
                     {questions.map((item, index) => {
                       const isOpen = openIndex === index;
                       return (
                         <div key={index}>
-                          <div className="flex items-center justify-between cursor-pointer bg-[#252732] p-3 rounded-lg border border-white/10 hover:bg-white/5 transition-all" onClick={() => setOpenIndex(isOpen ? null : index)}>
+                          <div className="flex items-center justify-between cursor-pointer bg-[#0e2148] p-3 rounded-lg border border-white/10 hover:bg-white/5 transition-all" onClick={() => setOpenIndex(isOpen ? null : index)}>
                             <p className="font-semibold text-white text-sm flex-1">{item.question}</p>
-                            {isOpen ? <ChevronUp className="w-4 h-4 text-[#6366f1]" /> : <ChevronDown className="w-4 h-4 text-white/60" />}
+                            {isOpen ? <ChevronUp className="w-4 h-4 text-[#0047ff]" /> : <ChevronDown className="w-4 h-4 text-white/60" />}
                           </div>
                           <div className={`transition-all duration-700 overflow-hidden ${isOpen ? "max-h-48 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
-                            <div className="bg-[#252732] py-2 px-3 rounded-xl border border-white/10">
+                            <div className="bg-[#0e2148] py-2 px-3 rounded-xl border border-white/10">
                               <p className="text-white/80 text-sm">{item.answer}</p>
                             </div>
                           </div>

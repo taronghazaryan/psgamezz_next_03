@@ -102,10 +102,10 @@ const BasketPageClient = () => {
 
   return (
     <>
-      <div className="min-h-screen py-8 md:py-12 bg-[#0d0e14]">
+      <div className="min-h-screen py-8 md:py-12 bg-[#030712]">
         <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
           <div className="mb-8 md:mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-2">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-display text-white mb-2">
               Корзина
             </h1>
             <p className="text-white/60 text-lg">
@@ -122,9 +122,9 @@ const BasketPageClient = () => {
                       type="checkbox"
                       checked={allChecked}
                       onChange={(e) => toggleAll(e.target.checked)}
-                      className="h-5 w-5 md:h-6 md:w-6 accent-[#6366f1] cursor-pointer"
+                      className="h-5 w-5 md:h-6 md:w-6 accent-[#0047ff] cursor-pointer"
                     />
-                    <span className="font-bold text-white text-lg md:text-xl group-hover:text-[#6366f1] transition-colors">
+                    <span className="font-bold text-white text-lg md:text-xl group-hover:text-[#0047ff] transition-colors">
                       Выбрать все
                     </span>
                   </label>
@@ -163,7 +163,7 @@ const BasketPageClient = () => {
 
                   <button
                     onClick={handleOrderClick}
-                    className="bg-[#6366f1] hover:bg-[#5555e0] text-white w-full py-4 rounded-xl text-lg md:text-xl font-black transition-all duration-200 hover:scale-105 shadow-lg"
+                    className="bg-[#0047ff] hover:bg-[#0033b7] text-white w-full py-4 rounded-xl text-lg md:text-xl font-black transition-all duration-200 hover:scale-105 shadow-lg"
                   >
                     Оформить заказ
                   </button>
@@ -176,7 +176,7 @@ const BasketPageClient = () => {
                 <p className="text-white/60 text-xl mb-4">Корзина пуста</p>
                 <Link
                   href="/games"
-                  className="bg-[#6366f1] hover:bg-[#5555e0] text-white px-8 py-4 rounded-2xl text-lg md:text-xl font-bold w-full transition-all duration-200 hover:scale-105"
+                  className="bg-[#0047ff] hover:bg-[#0033b7] text-white px-8 py-4 rounded-2xl text-lg md:text-xl font-bold w-full transition-all duration-200 hover:scale-105"
                 >
                   Смотреть игры
                 </Link>
@@ -197,7 +197,7 @@ const BasketPageClient = () => {
             </button>
 
             <div className='p-6 md:p-8'>
-              <h2 className='text-3xl md:text-4xl font-black mb-2'>Ваш заказ</h2>
+              <h2 className='text-3xl md:text-4xl font-black font-display mb-2'>Ваш заказ</h2>
               <p className='text-white/60 text-lg mb-6'>
                 Сумма: <span className='text-white font-bold text-xl'>{overallPrice}₽</span>
               </p>
@@ -243,7 +243,7 @@ const BasketPageClient = () => {
                     className={`w-full px-4 py-3 bg-white/5 border rounded-xl placeholder:text-white/40 text-white focus:outline-none focus:bg-white/10 transition-all ${
                       email.length > 0 && !isValidEmail(email)
                         ? 'border-red-500 focus:border-red-500'
-                        : 'border-white/20 focus:border-[#6366f1]'
+                        : 'border-white/20 focus:border-[#0047ff]'
                     }`}
                   />
                   {email.length > 0 && !isValidEmail(email) && (
@@ -259,7 +259,7 @@ const BasketPageClient = () => {
                     placeholder='Ваше имя'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className='w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl placeholder:text-white/40 text-white focus:outline-none focus:border-[#6366f1] focus:bg-white/10 transition-all'
+                    className='w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl placeholder:text-white/40 text-white focus:outline-none focus:border-[#0047ff] focus:bg-white/10 transition-all'
                   />
                 </div>
               </div>
@@ -277,7 +277,7 @@ const BasketPageClient = () => {
                       if (e.target.checked) setIsRulesModalOpen(true);
                       else setAgreedToRules(false);
                     }}
-                    className="h-5 w-5 accent-[#6366f1] cursor-pointer flex-shrink-0"
+                    className="h-5 w-5 accent-[#0047ff] cursor-pointer flex-shrink-0"
                   />
                   <span className="text-white/80 text-sm group-hover:text-white transition-colors">
                     Я согласен
@@ -301,7 +301,7 @@ const BasketPageClient = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={loading || !agreedToRules}
-                  className="flex-1 bg-[#6366f1] hover:bg-[#5555e0] text-white py-4 rounded-xl text-lg font-black transition-all duration-200 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="flex-1 bg-[#0047ff] hover:bg-[#0033b7] text-white py-4 rounded-xl text-lg font-black transition-all duration-200 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {loading ? "Обработка..." : "Купить"}
                 </button>
@@ -347,7 +347,7 @@ const BasketPageClient = () => {
                 </button>
                 <button
                   onClick={() => { setAgreedToRules(true); setIsRulesModalOpen(false); }}
-                  className="flex-1 bg-[#6366f1] hover:bg-[#5555e0] text-white py-3 rounded-xl font-black transition-all duration-200 hover:scale-105 shadow-lg"
+                  className="flex-1 bg-[#0047ff] hover:bg-[#0033b7] text-white py-3 rounded-xl font-black transition-all duration-200 hover:scale-105 shadow-lg"
                 >
                   Принять
                 </button>
