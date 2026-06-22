@@ -21,7 +21,25 @@ const Hero = () => {
       ></div>
       <div className="absolute inset-0 bg-[#030712]/80"></div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-32 lg:py-40">
+      {/* Контроллеры по бокам заголовка (как gameswim) */}
+      <Image
+        src="/img/controller.png"
+        alt=""
+        width={420}
+        height={420}
+        aria-hidden
+        className="hidden lg:block absolute left-0 xl:left-8 top-28 xl:top-32 w-[260px] xl:w-[330px] -rotate-[20deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
+      />
+      <Image
+        src="/img/controller.png"
+        alt=""
+        width={420}
+        height={420}
+        aria-hidden
+        className="hidden lg:block absolute right-0 xl:right-8 top-28 xl:top-32 w-[260px] xl:w-[330px] rotate-[20deg] scale-x-[-1] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
+      />
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-28 lg:py-32">
         <div className="max-w-5xl mx-auto text-center animate-fade-in">
           <h1 className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-black font-display leading-tight mb-3 md:mb-8">
             <span className="text-white">Всё для вашей</span>
