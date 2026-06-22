@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import GameImage from "../GameImage";
-import { ChevronDown, ChevronUp, Zap, ShieldCheck, Headset, FileText } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useBasket } from "../../context/BasketContext";
 
 export default function Hero({ productItem }) {
@@ -124,14 +124,8 @@ export default function Hero({ productItem }) {
                 alt={productItem.title}
                 width={300}
                 height={320}
-                className="rounded-3xl w-full h-[300px] md:w-[300px] md:h-[320px] object-cover shadow-2xl border border-[#0047ff]/25"
+                className="rounded-3xl w-full h-[300px] md:w-[300px] md:h-[320px] object-cover shadow-2xl border border-white/10"
               />
-              {saleAmount > 0 && (
-                <div className="absolute top-3 right-3 bg-[#ff0000] flex items-center gap-1 px-2.5 py-1 rounded-lg text-white text-sm font-bold shadow-lg shadow-red-900/40">
-                  <Image src="/icons/fire.svg" alt="fire" width={15} height={15} />
-                  −{saleAmount}%
-                </div>
-              )}
             </div>
             {productItem.images?.length > 0 && (
               <div className="flex flex-wrap justify-center gap-2 mt-3">
@@ -161,7 +155,7 @@ export default function Hero({ productItem }) {
           {/* Right side - Content - Fixed layout */}
           <div className="flex-1 flex flex-col gap-6 min-w-0">
             {/* Main card - Fixed height */}
-            <div className="flex flex-col md:flex-row premium-card rounded-3xl px-5 md:px-8 py-6">
+            <div className="flex flex-col md:flex-row bg-[#0b1c4a] rounded-3xl px-5 md:px-8 py-6 shadow-xl border border-white/10">
               {/* Left part - Fixed width */}
               <div className="flex-1 min-w-0 mb-4 md:mb-0 md:mr-6">
                 <h1 className="text-2xl md:text-3xl font-black mb-4 text-white line-clamp-2">{productItem.title}</h1>
@@ -226,10 +220,10 @@ export default function Hero({ productItem }) {
                 )}
 
                 <button
-                  className={`w-full md:w-[200px] lg:w-[240px] h-[50px] rounded-xl text-sm md:text-base font-black transition-all duration-200 ${
-                    alreadyInBasket
-                      ? "bg-white/10 cursor-not-allowed text-white/50 border border-white/10"
-                      : "premium-button hover:scale-[1.03]"
+                  className={`w-full md:w-[200px] lg:w-[240px] h-[44px] rounded-lg text-sm md:text-[15px] font-black transition-all duration-200 ${
+                    alreadyInBasket 
+                      ? "bg-white/20 cursor-not-allowed text-white/50" 
+                      : "bg-[#0047ff] hover:bg-[#0033b7] text-white hover:scale-105 shadow-lg"
                   }`}
                   onClick={() => {
                     if (!alreadyInBasket && priceData?.price_id) {
@@ -253,26 +247,6 @@ export default function Hero({ productItem }) {
                   {alreadyInBasket ? "Уже в корзине" : "В корзину"}
                 </button>
               </div>
-            </div>
-
-            {/* Гарантии */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              {[
-                { Icon: Zap, title: "Моментально", text: "Выдача после оплаты" },
-                { Icon: ShieldCheck, title: "Гарантия", text: "Безопасная сделка" },
-                { Icon: Headset, title: "Поддержка 24/7", text: "Поможем на всех этапах" },
-                { Icon: FileText, title: "Инструкция", text: "Подробно по установке" },
-              ].map((g, i) => (
-                <div key={i} className="premium-card rounded-2xl p-3.5 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl premium-gradient flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#0047ff]/30">
-                    <g.Icon className="w-5 h-5 text-white" strokeWidth={1.9} />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-white font-bold text-sm leading-tight">{g.title}</p>
-                    <p className="text-white/60 text-xs leading-tight mt-0.5">{g.text}</p>
-                  </div>
-                </div>
-              ))}
             </div>
 
             {/* Tabs */}
@@ -300,7 +274,7 @@ export default function Hero({ productItem }) {
 
               <div className="mt-3 flex flex-col gap-3">
                 <div className={`transition-all duration-700 overflow-hidden ${openTab === "about" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
-                  <div className="premium-card rounded-xl p-4">
+                  <div className="bg-[#0b1c4a] rounded-xl p-4 border border-white/10">
                     <p className="text-white/90">{productItem.about}</p>
                   </div>
                 </div>
@@ -330,7 +304,7 @@ export default function Hero({ productItem }) {
 
 
                 <div className={`transition-all duration-700 overflow-hidden ${openTab === "faq" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
-                  <div className="premium-card rounded-xl p-4 flex flex-col gap-2">
+                  <div className="bg-[#0b1c4a] rounded-xl p-4 flex flex-col gap-2 border border-white/10">
                     {questions.map((item, index) => {
                       const isOpen = openIndex === index;
                       return (
