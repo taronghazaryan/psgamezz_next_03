@@ -124,8 +124,14 @@ export default function Hero({ productItem }) {
                 alt={productItem.title}
                 width={300}
                 height={320}
-                className="rounded-3xl w-full h-[300px] md:w-[300px] md:h-[320px] object-cover shadow-2xl border border-white/10"
+                className="rounded-3xl w-full h-[300px] md:w-[300px] md:h-[320px] object-cover shadow-2xl border border-[#0047ff]/25"
               />
+              {saleAmount > 0 && (
+                <div className="absolute top-3 right-3 bg-[#ff0000] flex items-center gap-1 px-2.5 py-1 rounded-lg text-white text-sm font-bold shadow-lg shadow-red-900/40">
+                  <Image src="/icons/fire.svg" alt="fire" width={15} height={15} />
+                  −{saleAmount}%
+                </div>
+              )}
             </div>
             {productItem.images?.length > 0 && (
               <div className="flex flex-wrap justify-center gap-2 mt-3">
@@ -155,7 +161,7 @@ export default function Hero({ productItem }) {
           {/* Right side - Content - Fixed layout */}
           <div className="flex-1 flex flex-col gap-6 min-w-0">
             {/* Main card - Fixed height */}
-            <div className="flex flex-col md:flex-row bg-[#0b1c4a] rounded-3xl px-5 md:px-8 py-6 shadow-xl border border-white/10">
+            <div className="flex flex-col md:flex-row premium-card rounded-3xl px-5 md:px-8 py-6">
               {/* Left part - Fixed width */}
               <div className="flex-1 min-w-0 mb-4 md:mb-0 md:mr-6">
                 <h1 className="text-2xl md:text-3xl font-black mb-4 text-white line-clamp-2">{productItem.title}</h1>
@@ -220,10 +226,10 @@ export default function Hero({ productItem }) {
                 )}
 
                 <button
-                  className={`w-full md:w-[200px] lg:w-[240px] h-[44px] rounded-lg text-sm md:text-[15px] font-black transition-all duration-200 ${
-                    alreadyInBasket 
-                      ? "bg-white/20 cursor-not-allowed text-white/50" 
-                      : "bg-[#0047ff] hover:bg-[#0033b7] text-white hover:scale-105 shadow-lg"
+                  className={`w-full md:w-[200px] lg:w-[240px] h-[50px] rounded-xl text-sm md:text-base font-black transition-all duration-200 ${
+                    alreadyInBasket
+                      ? "bg-white/10 cursor-not-allowed text-white/50 border border-white/10"
+                      : "premium-button hover:scale-[1.03]"
                   }`}
                   onClick={() => {
                     if (!alreadyInBasket && priceData?.price_id) {
@@ -274,7 +280,7 @@ export default function Hero({ productItem }) {
 
               <div className="mt-3 flex flex-col gap-3">
                 <div className={`transition-all duration-700 overflow-hidden ${openTab === "about" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
-                  <div className="bg-[#0b1c4a] rounded-xl p-4 border border-white/10">
+                  <div className="premium-card rounded-xl p-4">
                     <p className="text-white/90">{productItem.about}</p>
                   </div>
                 </div>
@@ -304,7 +310,7 @@ export default function Hero({ productItem }) {
 
 
                 <div className={`transition-all duration-700 overflow-hidden ${openTab === "faq" ? "max-h-full opacity-100" : "max-h-0 opacity-0"}`}>
-                  <div className="bg-[#0b1c4a] rounded-xl p-4 flex flex-col gap-2 border border-white/10">
+                  <div className="premium-card rounded-xl p-4 flex flex-col gap-2">
                     {questions.map((item, index) => {
                       const isOpen = openIndex === index;
                       return (

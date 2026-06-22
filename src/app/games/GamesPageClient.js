@@ -37,7 +37,7 @@ export default function GamesPage() {
         </div>
       </div>
 
-      <div className="py-8 md:py-12 bg-[#030712]">
+      <div key={activeTab} className="py-8 md:py-12 bg-[#030712] min-h-[60vh] animate-fade-in">
         {activeTab === "Главная" && <Main />}
         {activeTab === "Все игры" && <div className="px-4 md:px-6 lg:px-8"><AllGames /></div>}
         {activeTab === "Скидки" && <div className="px-4 md:px-6 lg:px-8"><Sales /></div>}

@@ -80,12 +80,12 @@ export default function Card({ activationType, prices, ...product }) {
       className="w-full max-w-[250px] group"
     >
       <div
-        className="premium-card premium-card-hover flex flex-col overflow-hidden rounded-2xl p-2.5 h-full"
+        className="flex flex-col  overflow-hidden  transition-shadow h-full"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Image */}
-        <div className="relative w-full aspect-square overflow-hidden rounded-xl">
+        <div className="relative w-full aspect-square overflow-hidden rounded-2xl">
           <GameImage
             src={product.main_image_url}
             alt={product.title}
@@ -94,12 +94,10 @@ export default function Card({ activationType, prices, ...product }) {
               isHovered ? "scale-110" : "scale-100"
             }`}
           />
-          {/* затемнение снизу для читаемости бейджей */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/50 via-transparent to-transparent" />
 
           {/* SALE */}
           {hasDiscount && (
-            <div className="absolute top-2 right-2 bg-[#ff0000] flex items-center gap-1 px-2 py-1 rounded-lg text-white text-xs font-bold shadow-lg shadow-red-900/40">
+            <div className="absolute top-2 right-2 bg-red-600 flex items-center gap-1 px-2 py-1 rounded-lg text-white text-xs shadow-md">
               <Image src="/icons/fire.svg" alt="fire" width={14} height={14} />
               SALE
             </div>
@@ -107,58 +105,52 @@ export default function Card({ activationType, prices, ...product }) {
 
           {/* Русская озвучка */}
           {hasRussianVoice && (
-            <div className="absolute top-2 left-2 bg-white/95 backdrop-blur flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-semibold text-[#030712] shadow-md">
+            <div className="absolute top-2 left-2 bg-white flex items-center gap-1 px-2 py-1 rounded-lg text-xs text-primary shadow-md">
               <Image src="/img/russia.png" alt="russian" width={16} height={16} />
               Рус. озв
-            </div>
-          )}
-
-          {/* Консоли — чипы поверх картинки снизу */}
-          {product.consoles?.length > 0 && (
-            <div className="absolute bottom-2 left-2 flex gap-1">
-              {product.consoles.map((console, idx) => (
-                <span
-                  key={idx}
-                  className="bg-[#030712]/70 backdrop-blur text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-white/15"
-                >
-                  {console}
-                </span>
-              ))}
             </div>
           )}
         </div>
 
         {/* Content */}
-        <div className="flex flex-col gap-1.5 mt-3 px-0.5 flex-grow">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="text-white font-bold text-sm leading-tight flex-1 group-hover:text-[#0047ff] transition-colors">
-              {truncateText(normalizedTitle, 24)}
-            </h3>
-            <div className="flex items-center gap-1 flex-shrink-0">
-              <Image src="/star.svg" alt="star" width={13} height={13} />
-              <span className="text-[#fcc000] font-bold text-xs">5</span>
-            </div>
+        <div className="flex flex-col gap-1 mt-2">
+          <h3 className="text-white font-bold text-sm">
+            {truncateText(normalizedTitle, 20)}
+          </h3>
+
+          <div className="flex items-center gap-1.5">
+            <Image src="/star.svg" alt="star" width={13} height={13} />
+            <span className="text-white font-bold text-xs">
+              5
+            </span>
+            {product.consoles?.map((console, idx) => (
+              <span key={idx} className="text-white font-bold text-xs">
+                {console}
+              </span>
+            ))}
           </div>
 
-          <div className="mt-auto pt-1.5 flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 mt-1">
             {activationPriceData ? (
               <>
-                <p className="text-white text-lg font-black">
-                  от {activationPriceData.discountedPrice}₽
+                <p className="text-white text-base font-bold">
+                  {`от ${activationPriceData.discountedPrice}Р`}
                 </p>
                 {hasDiscount && (
                   <>
-                    <p className="text-white/40 line-through text-xs">
-                      {activationPriceData.basePrice}₽
+                    <p className="text-gray-500 line-through text-xs">
+                      {activationPriceData.basePrice}Р
                     </p>
-                    <div className="bg-[#ff0000] text-white font-bold px-1.5 py-0.5 rounded-md text-xs">
-                      −{Math.round(activationPriceData.sale)}%
+                    <div className="bg-red-600 text-white font-bold px-1.5 py-0.5 rounded-lg text-xs">
+                      -{Math.round(activationPriceData.sale)}%
                     </div>
                   </>
                 )}
               </>
             ) : (
-              <p className="text-white/50 text-sm font-bold">Нет в наличии</p>
+              <p className="text-primary text-base font-bold">
+                Нет в наличии
+              </p>
             )}
           </div>
         </div>
