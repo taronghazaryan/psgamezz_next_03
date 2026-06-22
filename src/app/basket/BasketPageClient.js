@@ -42,10 +42,14 @@ const BasketPageClient = () => {
   };
 
   const redirectToPayment = (url) => {
-    const isTelegram = typeof window !== "undefined" && window.Telegram?.WebApp;
+    const tg = typeof window !== "undefined" ? window.Telegram?.WebApp : null;
+    // SDK создаёт window.Telegram.WebApp на любой странице. Реальный запуск
+    // из Telegram отличаем по непустому initData / platform !== "unknown".
+    const inTelegram =
+      !!tg && (tg.initData?.length > 0 || (tg.platform && tg.platform !== "unknown"));
 
-    if (isTelegram) {
-      window.Telegram.WebApp.openLink(url);
+    if (inTelegram) {
+      tg.openLink(url);
     } else {
       window.location.href = url;
     }
