@@ -22,41 +22,51 @@ export default function HomepageClient() {
     const params = new URLSearchParams(window.location.search);
     const pid = params.get('pid');
 
-    if (!pid) return; 
+    if (!pid) return;
 
-    console.log("Fetching payment status for pid:", pid);
+    let cancelled = false;
 
-    fetch(`https://psgamezz.ru/api/payment/status/?pid=${pid}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-    })
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Payment status data:", data);
+    // Опрашиваем статус несколько раз: вебхук pal24 может проставить "success"
+    // чуть позже, чем браузер вернулся с оплаты. Без ретраев один промах
+    // показал бы "Ошибка оплаты" при реально успешном платеже.
+    const checkStatus = async () => {
+      const tries = 5;
+      const delay = 1500;
 
-        if (data.status === "success") {
-          setInvoiceId(data.inv_id);
-          setShowSuccessModal(true);
-          clearBasket();
-        } else {
-          setShowFailModal(true);
+      for (let i = 0; i < tries; i++) {
+        try {
+          const res = await fetch(`https://psgamezz.ru/api/payment/status/?pid=${pid}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data.status === "success") {
+              if (!cancelled) {
+                setInvoiceId(data.inv_id);
+                setShowSuccessModal(true);
+                clearBasket();
+              }
+              return;
+            }
+          }
+        } catch (err) {
+          console.error("Payment status fetch error:", err);
         }
-      })
-      .catch((err) => {
-        console.error("Payment status fetch error:", err);
-        setShowFailModal(true);
-      })
-      .finally(() => {
-        const url = new URL(window.location);
-        url.searchParams.delete('pid');
-        window.history.replaceState({}, '', url);
-      });
+        if (i < tries - 1) await new Promise((r) => setTimeout(r, delay));
+      }
+      // За все попытки success так и не пришёл — показываем ошибку
+      if (!cancelled) setShowFailModal(true);
+    };
+
+    checkStatus().finally(() => {
+      const url = new URL(window.location);
+      url.searchParams.delete('pid');
+      window.history.replaceState({}, '', url);
+    });
+
+    return () => { cancelled = true; };
   }, [clearBasket]);
 
 
