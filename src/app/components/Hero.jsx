@@ -16,24 +16,26 @@ const Hero = () => {
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30"
-        style={{ backgroundImage: `url(/img/palmer.png)` }}
+        style={{ backgroundImage: `url(/img/palmer.webp)` }}
       ></div>
       <div className="absolute inset-0 bg-[#030712]/80"></div>
 
       {/* Контроллеры по бокам блоков (оранжевый слева, белый справа) */}
       <Image
-        src="/images/lcont.png"
+        src="/images/lcont.webp"
         alt=""
         width={620}
         height={620}
+        priority
         aria-hidden
         className="hidden lg:block absolute -left-10 xl:left-0 top-[27%] w-[460px] xl:w-[580px] -rotate-[60deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
       />
       <Image
-        src="/images/rcont.png"
+        src="/images/rcont.webp"
         alt=""
         width={620}
         height={620}
+        priority
         aria-hidden
         className="hidden lg:block absolute -right-10 xl:right-0 top-[27%] w-[460px] xl:w-[580px] rotate-[60deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
       />

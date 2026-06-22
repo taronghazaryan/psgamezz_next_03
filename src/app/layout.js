@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
     <html lang="ru" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <link rel="preload" as="image" href="/img/palmer.png" />
+        <link rel="preload" as="image" href="/img/palmer.webp" />
         <Script
           src="https://telegram.org/js/telegram-web-app.js"
           strategy="afterInteractive"
