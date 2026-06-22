@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { Coins, RotateCcw, Gift } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -55,17 +56,17 @@ const Section3 = () => {
     {
       title: "Получай кешбек за покупки",
       texts: ["2% бонусов до 4000 рублей", "5% бонусов до 10000 рублей", "7% бонусов до 50000 рублей"],
-      icon: "💰"
+      Icon: Coins,
     },
     {
       title: "Прошёл игру?",
       texts: ["Верни аккаунт и получи 25% её стоимости на бонусный счёт"],
-      icon: "🔄"
+      Icon: RotateCcw,
     },
     {
       title: "100 бонусов за регистрацию",
       button: "Зарегистрироваться",
-      icon: "🎁"
+      Icon: Gift,
     },
   ];
 
@@ -151,7 +152,9 @@ const Section3 = () => {
                 key={i} 
                 className="premium-card rounded-3xl p-8 md:p-10 flex flex-col items-center text-center premium-card-hover border border-white/10"
               >
-                <div className="text-6xl md:text-7xl mb-6">{card.icon}</div>
+                <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl premium-gradient flex items-center justify-center shadow-lg shadow-[#0047ff]/30">
+                  <card.Icon className="w-11 h-11 text-white" strokeWidth={1.8} />
+                </div>
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-4">
                   {card.title}
                 </h3>

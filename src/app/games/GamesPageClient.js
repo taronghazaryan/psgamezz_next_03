@@ -11,23 +11,23 @@ export default function GamesPage() {
 
   return (
     <div className="min-h-screen bg-[#030712]">
-      <div className="bg-[#070c1b]  border-white/10">
+      <div className="bg-[#070c1b] border-b border-white/10">
         <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex justify-center gap-2 md:gap-4 py-6 md:py-8">
+          <div className="flex justify-center gap-2 md:gap-3 py-5 md:py-7">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`
-                  relative 
-                  px-4 sm:px-8 md:px-12 lg:px-16 
-                  py-1 sm:py-1 md:py-1 
-                  font-bold 
-                  text-sm max-sm:text-sm sm:text-base md:text-lg lg:text-xl 
+                  relative rounded-xl
+                  px-5 sm:px-8 md:px-10 lg:px-14
+                  py-2.5 md:py-3
+                  font-bold font-display
+                  text-sm sm:text-base md:text-lg
                   transition-all duration-300 cursor-pointer
                   ${activeTab === tab
-                    ? "text-white scale-105"
-                    : "text-white/60 hover:text-white "}
+                    ? "bg-[#0047ff] text-white shadow-lg shadow-[#0047ff]/30"
+                    : "text-white/60 hover:text-white hover:bg-white/5"}
                 `}
               >
                 {tab}

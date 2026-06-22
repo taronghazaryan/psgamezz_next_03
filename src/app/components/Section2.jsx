@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Gamepad2, Wallet } from "lucide-react";
 
 const Section2 = () => {
   return (
@@ -19,10 +20,8 @@ const Section2 = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <Link href="https://t.me/psgamezz" className="group">
             <div className="premium-card rounded-3xl p-8 md:p-10 premium-card-hover h-full flex flex-col items-center text-center">
-              <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl premium-gradient flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
+              <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl premium-gradient flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#0047ff]/30">
+                <Gamepad2 className="w-11 h-11 text-white" strokeWidth={1.8} />
               </div>
               <h3 className="text-2xl md:text-3xl font-black text-white mb-3">
                 Игровые аккаунты
@@ -35,10 +34,8 @@ const Section2 = () => {
 
           <Link href="https://t.me/psgamezz" className="group">
             <div className="premium-card rounded-3xl p-8 md:p-10 premium-card-hover h-full flex flex-col items-center text-center">
-              <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl premium-gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+              <div className="w-20 h-20 md:w-24 md:h-24 mb-6 rounded-2xl premium-gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#0047ff]/30">
+                <Wallet className="w-11 h-11 text-white" strokeWidth={1.8} />
               </div>
               <h3 className="text-2xl md:text-3xl font-black text-white mb-3">
                 Пополнение кошелька
