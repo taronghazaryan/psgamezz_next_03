@@ -20,22 +20,22 @@ const Hero = () => {
       ></div>
       <div className="absolute inset-0 bg-[#030712]/80"></div>
 
-      {/* Контроллеры по бокам заголовка (как gameswim) */}
+      {/* Контроллеры по бокам блоков (оранжевый слева, белый справа) */}
       <Image
-        src="/img/controller.png"
+        src="/images/lcont.png"
         alt=""
-        width={420}
-        height={420}
+        width={520}
+        height={520}
         aria-hidden
-        className="hidden lg:block absolute left-0 xl:left-8 top-28 xl:top-32 w-[260px] xl:w-[330px] -rotate-[20deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
+        className="hidden lg:block absolute left-0 xl:left-4 top-[42%] w-[360px] xl:w-[460px] -rotate-[18deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
       />
       <Image
-        src="/img/controller.png"
+        src="/images/rcont.png"
         alt=""
-        width={420}
-        height={420}
+        width={520}
+        height={520}
         aria-hidden
-        className="hidden lg:block absolute right-0 xl:right-8 top-28 xl:top-32 w-[260px] xl:w-[330px] rotate-[20deg] scale-x-[-1] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
+        className="hidden lg:block absolute right-0 xl:right-4 top-[42%] w-[360px] xl:w-[460px] rotate-[18deg] opacity-95 pointer-events-none select-none drop-shadow-2xl z-0"
       />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-28 lg:py-32">
