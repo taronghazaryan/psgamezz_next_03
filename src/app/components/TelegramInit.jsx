@@ -18,10 +18,12 @@ export default function TelegramInit() {
       if (typeof tg.setBackgroundColor === "function") tg.setBackgroundColor("#030712");
       if (typeof tg.setBottomBarColor === "function") tg.setBottomBarColor("#030712");
 
-      // Push safe-area values to CSS vars (more reliable than auto-set ones on older clients)
+      // Push safe-area values to CSS vars.
+      // top/bottom = вырез экрана (safeAreaInset) + полоса UI Telegram
+      // (contentSafeAreaInset, в fullscreen это кнопки закрыть/меню/свернуть).
       const applyInsets = () => {
-        const top = tg.safeAreaInset?.top ?? tg.contentSafeAreaInset?.top ?? 0;
-        const bottom = tg.safeAreaInset?.bottom ?? 0;
+        const top = (tg.safeAreaInset?.top ?? 0) + (tg.contentSafeAreaInset?.top ?? 0);
+        const bottom = (tg.safeAreaInset?.bottom ?? 0) + (tg.contentSafeAreaInset?.bottom ?? 0);
         document.documentElement.style.setProperty("--tg-safe-area-inset-top", `${top}px`);
         document.documentElement.style.setProperty("--tg-safe-area-inset-bottom", `${bottom}px`);
       };
